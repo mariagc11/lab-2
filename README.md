@@ -180,6 +180,8 @@ print(f"Máximo: {time_max}")
 print(f"Mínimo: {time_min}")
 
 ```
+<img width="425" height="124" alt="image" src="https://github.com/user-attachments/assets/e89b51ec-265d-4607-8ca4-c2d3ebbe23af" />
+
 ### Graficar la señal en el dominio del tiempo:
 
 El código grafica la señal de ECG en función del tiempo. Primero, crea una figura de 10x4 y luego dibuja la señal con `plt.plot()`, etiquetando los ejes y agregando un título. También incluye una leyenda para identificar la señal y, al final, muestra la gráfica con `plt.show()`, permitiendo visualizar cómo varía la señal a lo largo del tiempo.
@@ -233,7 +235,8 @@ plt.grid()
 plt.show()
 
 ```
-![image](https://github.com/user-attachments/assets/232dec64-684b-4ba6-b5d8-b89372f42e81)
+![Imagen de WhatsApp 2025-09-02 a las 20 51 15_f9d52e1c](https://github.com/user-attachments/assets/b6f55be4-4d03-40e7-801e-3f5354f7d4da)
+
 
 
 ### Cálculo de estadísticas en el dominio de la frecuencia:
@@ -264,7 +267,12 @@ plt.show()
 
 
 ```
-![image](https://github.com/user-attachments/assets/12727ccc-c4ed-4dbd-97fa-6cd0f6cbe6e4)
+![Imagen de WhatsApp 2025-09-02 a las 20 51 24_24ac0e8e](https://github.com/user-attachments/assets/3d64828f-dc3b-431c-a351-20f73063d40d)
+
+<img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/7886532b-d9ee-481e-88f7-2d92931775b3" />
+![Imagen de WhatsApp 2025-09-02 a las 20 54 11_c8a842eb](https://github.com/user-attachments/assets/de94d4c0-3af5-48c3-987b-9472fb5719af)
+![Imagen de WhatsApp 2025-09-02 a las 20 56 47_9d435261](https://github.com/user-attachments/assets/7a990b80-8e8a-41e4-9589-7aa5c94a955f)
+<img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/ef0a7da1-91da-41e6-a06b-cd273148200f" />
 
 ## Conclusión.
 

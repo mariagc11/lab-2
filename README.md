@@ -309,6 +309,194 @@ plt.show()
 
 
 <img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/ef0a7da1-91da-41e6-a06b-cd273148200f" />
+## Analisis y resultados 
+
+
+
+## 1) Convolución (tres subgráficas)
+
+**Qué muestra**  
+La salida del sistema $y[n]$ al convolucionar la entrada $x[n]$ con la respuesta al impulso $h[n]$ para tres casos: **Gaby**, **María José** y **Martín**.
+
+**Lectura paso a paso**  
+- La longitud de $y[n]$ es mayor que la de $x[n]$ y $h[n]$ (por la propia definición de la convolución).
+- Cada valor no nulo de $x[n]$ “dispara” una copia de $h[n]$ escalada y desplazada; la salida es la **suma** de todas esas copias.
+- El patrón de picos y valles de $y[n]$ depende de **dónde** están los no ceros de $x[n]$ y de la **forma** de $h[n]$.
+
+**Interpretación**  
+- **Gaby**: picos fuertes entre $n\approx 8$ y $n\approx 12$ → hubo valores relevantes en $x[n]$ que activaron $h[n]$ en esa zona. La cola posterior refleja la “memoria” del sistema.  
+- **María José**: crecimiento “escalonado” hasta un máximo en $n\approx 9$ y luego decae → suma de varias copias de $h[n]$ superpuestas.  
+- **Martín**: máximo cerca de $n\approx 9$ con cambios más suaves → $h[n]$ más compacta o menor dispersión de no ceros en $x[n]$.
+
+**Conclusión**  
+Demuestra la **superposición**: cada componente de $x[n]$ inserta una réplica de $h[n]$ y la suma de todas produce $y[n]$.
+
+---
+
+## 2) Correlación cruzada: $x_1[n]$ (coseno) vs $x_2[n]$ (seno)
+
+**Qué muestra**  
+La función $R_{x_1 x_2}[m]$ para lags $-8 \le m \le 8$.
+
+**Lectura paso a paso**  
+- Coseno y seno a la misma frecuencia son **ortogonales** (desfasados 90°), así que su correlación ideal es **cero**.
+- Con solo **9 muestras** no se cubre un período completo, por eso aparecen valores pequeños distintos de cero en lags diferentes a 0 (efecto de **ventana finita** y **fuga espectral**).
+- La curva es **impar** alrededor de 0 (positivo a un lado y negativo al otro), coherente con el desfase de $\pi/2$.
+
+**Interpretación**  
+Se observa una correlación casi nula en $m=0$ y pequeñas oscilaciones fuera de 0 por limitaciones de muestreo.
+
+**Conclusión**  
+Confirma la ortogonalidad teórica, con pequeñas desviaciones por el número **limitado** de muestras.
+
+---
+
+## 3) ECG en el dominio del tiempo (registro completo)
+
+**Qué muestra**  
+El ECG completo a lo largo de varias horas (escala de tiempo grande).
+
+**Lectura paso a paso**  
+- La señal oscila alrededor de **cero** (línea isoeléctrica), como es esperable.
+- Estadísticos: media ~0, $\sigma$ moderada; máximos en torno a **2.44 mV** (picos QRS) y mínimos ~**−1.65 mV** (valores negativos pronunciados que pueden incluir artefactos puntuales).
+- A esta escala, la densidad de puntos hace que no se distingan P, QRS y T.
+
+**Interpretación**  
+La señal es consistente con un **ECG real**: centrada, con picos de amplitud en latidos y posibles artefactos esporádicos.
+
+**Conclusión**  
+Para ver morfología (P–QRS–T), conviene **hacer zoom** a ventanas de 3–5 s o submuestrear para visualizar tendencias.
+
+---
+
+## 4) Magnitud de la FFT (0–50 Hz)
+
+**Qué muestra**  
+La magnitud espectral $|X(f)|$ del ECG.
+
+**Lectura paso a paso**  
+- La mayor parte de la energía está entre **~1 y 25 Hz**, donde viven P, QRS y T.
+- Un pico cerca de **0 Hz** delata **deriva de línea base** (componentes muy lentos).
+- Por encima de **30–40 Hz** la magnitud cae: el ECG tiene poca energía en altas frecuencias.
+
+**Interpretación**  
+El ECG es predominantemente de **baja frecuencia**, por eso en biomédica se trabaja con filtros que preservan hasta ~40 Hz.
+
+**Conclusión**  
+El espectro es coherente con la fisiología del ECG; conviene **detrend** y ventaneo para mejorar la estimación.
+
+---
+
+## 5) Densidad “de potencia” basada en $|FFT|^2$
+
+**Qué muestra**  
+Una versión de potencia espectral $|X(f)|^2$ (sin normalización a W/Hz).
+
+**Lectura paso a paso**  
+- Refuerza lo anterior: la potencia se concentra **< 20 Hz**, con máximos entre **~5 y ~15 Hz** (zona QRS + parte de P/T).
+- Se aprecia “hombro” de muy baja frecuencia por línea base y caída hacia 50 Hz.
+
+**Interpretación**  
+La energía útil del ECG está en bajas frecuencias; altas frecuencias suelen ser **ruido** (músculo, red).
+
+**Conclusión**  
+Si se requiere PSD física, usar **Welch** (`signal.welch`) y graficar en **semilog-y**.
+
+> Sugerencia de código:
+> ```python
+> f_psd, Pxx = signal.welch(signal_data, fs=sampling_rate, nperseg=2048)
+> ```
+
+---
+
+## 6) Histograma de frecuencias ponderado por potencia
+
+**Qué muestra**  
+Distribución de potencia por bins de frecuencia.
+
+**Lectura paso a paso**  
+- La “masa” principal cae entre **~5 y ~15 Hz**, consistente con el complejo QRS y ondas asociadas.
+- No es la representación PSD “clásica”, pero sirve para confirmar la **concentración** de energía en bajas.
+
+**Interpretación**  
+Buena herramienta rápida para ver dónde “vive” la energía de la señal.
+
+**Conclusión**  
+Alternativa más robusta: **curva de potencia acumulada** (CDF) o Welch + **mediana energética**.
+
+---
+
+## 7) Resumen numérico (tiempo, frecuencia y Pearson)
+
+**Qué muestra**  
+Cálculos agregados impresos en texto.
+
+**Lectura paso a paso**  
+- **Tiempo**: media ≈ 0, $\sigma$ ≈ 0.244, máx 2.44, mín −1.655 → rango razonable para ECG.  
+- **Frecuencia**:
+  - **Media** ≈ **12.1 Hz** → centroide lógico (zona QRS).
+  - **Mediana** ≈ **30.85 Hz** → **sobreestimada** por el método usado (ordenar potencias en lugar de usar **acumulado** por frecuencia). Lo correcto es con CDF de potencia.
+- **Pearson**:
+  - Original vs **IFFT**: **1.000** → reconstrucción perfecta (sanidad del pipeline FFT/IFFT).
+  - Original vs **Filtrada (0.5–40 Hz)**: **~0.996** → altísima similitud, limpieza sin distorsión.
+
+**Interpretación**  
+Los números acompañan lo visto en los gráficos: señal bien capturada, espectro fisiológico y filtrado adecuado.
+
+**Conclusión**  
+La metodología es sólida; solo ajustar el cálculo de mediana espectral.
+
+> Mediana espectral correcta (CDF):
+> ```python
+> cdf = np.cumsum(power_spectrum) / np.sum(power_spectrum)
+> freq_median_true = np.interp(0.5, cdf, freqs)
+> ```
+
+---
+
+## 8) Comparación temporal: original vs filtrada (0.5–40 Hz)
+
+**Qué muestra**  
+Las dos señales superpuestas en el tiempo.
+
+**Lectura paso a paso**  
+- A simple vista se ven casi **idénticas**: el filtro **no deforma** la morfología.
+- La diferencia real está en que la filtrada **reduce** deriva (muy baja f) y **ruido** (alta f).
+
+**Interpretación**  
+El filtrado con banda 0.5–40 Hz y `filtfilt` (fase cero) **limpia** sin desplazar ni distorsionar los latidos.
+
+**Conclusión**  
+El valor Pearson ≈ **0.996** lo confirma. Para ver aún mejor el efecto, conviene **hacer zoom** (5–10 s) o graficar también la **línea base** estimada.
+
+---
+
+## 9) Pearson vs lag (original vs filtrada)
+
+**Qué muestra**  
+El coeficiente de Pearson $r$ en función del desfase (lag) entre las dos señales.
+
+**Lectura paso a paso**  
+- El **pico máximo** está en **lag = 0** con $r \approx 1$ → **no hay retardo** entre las señales.
+- Los **lóbulos laterales** son pequeños y simétricos → reflejan el ancho de banda limitado del ECG y su autocorrelación interna.
+
+**Interpretación**  
+Las señales están **perfectamente alineadas** y son **muy similares**.
+
+**Conclusión**  
+El filtrado con `filtfilt` mantiene **fase cero**; no desplaza la señal y preserva la forma.
+
+---
+
+## ✅ Cierre general
+
+- La **convolución** muestra claramente cómo un sistema LTI transforma entradas discretas mediante **superposición**.  
+- La **correlación** entre coseno y seno valida la **ortogonalidad** (con pequeñas desviaciones por pocas muestras).  
+- El **ECG** es de **baja frecuencia** (0.5–40 Hz); el espectro y la “potencia” lo evidencian.  
+- El **filtrado** limpia la señal sin **desfase** ni pérdida de morfología (Pearson ~0.996).  
+- Para métricas espectrales más precisas, usa **Welch** y **mediana energética** por **CDF**.
+
+---
 
 ## Conclusión.
 

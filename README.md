@@ -26,7 +26,7 @@ import os
 
 ### Convolución:
 
-El código define las señales \( h[n] \) y \( x[n] \) para tres personas diferentes: Gime, María José y Nicole. Estas señales son representadas como arreglos de NumPy, donde \( h[n] \) corresponde al sistema y \( x[n] \) a la señal de entrada. Cada persona tiene su propio conjunto de datos, posiblemente para comparar cómo interactúan las señales en distintas situaciones.
+El código define las señales \( h[n] \) y \( x[n] \) para tres personas diferentes: Gaby, María José y Martin. Estas señales son representadas como arreglos de NumPy, donde \( h[n] \) corresponde al sistema y \( x[n] \) a la señal de entrada. Cada persona tiene su propio conjunto de datos, posiblemente para comparar cómo interactúan las señales en distintas situaciones.
 ```
 # Gaby
 h_gaby = np.array([5, 6, 0, 0, 8, 7, 7])  # Sistema h[n]
@@ -55,7 +55,7 @@ Graficas de convolución:
 ```
 ### Grafico:
 
-Este fragmento de código usa *Matplotlib* para visualizar las señales convolucionadas de Gime, María José y Nicole en una sola figura con tres subgráficos. Primero, se crea una figura de tamaño 12x6. Luego, se generan tres gráficos de tipo *stem*, que representan las señales discretas con líneas y marcadores.  
+Este fragmento de código usa *Matplotlib* para visualizar las señales convolucionadas de Gaby, María José y Martin en una sola figura con tres subgráficos. Primero, se crea una figura de tamaño 12x6. Luego, se generan tres gráficos de tipo *stem*, que representan las señales discretas con líneas y marcadores.  
 
 - En el primer *subplot*, se grafica la convolución de Gime en color amarillo (`y-` para las líneas y `yo` para los marcadores).  
 - En el segundo, se muestra la convolución de María José en rojo (`r-` y `ro`).  

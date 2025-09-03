@@ -1,7 +1,41 @@
 #lab 2 
 ## Introducción.
 Uno de los elementos tratados en la practica a continuación, es la convolución, para esto usamos los digitos del codigo universsitario y el documento de identificación de cada una de las integrantes, este proceso se realiza de manera manual y se implementa esto mismo de manera digital por medio de programación en Phyton mostrando la convolución de manera gráfica, con estas mismas señales se calcula la correlación. Por otro lado, se escogió una señal ECG de apnea del sueño, un trastorno caracterizado por pausas en la respiración durante el sueño, y su detección mediante señales electrocardiográficas (ECG). Se basa en la base de datos Apnea-ECG de PhysioNet, que contiene registros de ECG para el desarrollo de métodos automatizados de diagnóstico. El contenido ha sido elaborado por  Dr. Thomas Penzel de la Universidad Phillips, Marburgo, Alemania, con el objetivo de proporcionar una visión técnica sobre la apnea y su análisis a través de ECG. A partir de esta señal, aplicaremos la transformada de Fourier para analizar señales en el dominio de la frecuencia, lo que nos permitirá extraer información clave sobre su comportamiento en el dominio del tiempo (media, mediana, desviación estandar, máximos y mínimos) y el dominio de la frecuencia (la frecuencia media, frecuencia mediana y desviación etsandar de la frecuencia).
+## Marco Teórico
 
+### Convolución
+La convolución discreta se define como:  
+
+$$
+y[n] = (x * h)[n] = \sum_{k=-\infty}^{\infty} x[k] \cdot h[n-k]
+$$  
+
+---
+
+### Correlación cruzada
+Mide el nivel de semejanza entre dos señales bajo un desplazamiento $m$:  
+
+$$
+R_{xy}[m] = \sum_n x[n]\cdot y[n+m]
+$$  
+
+---
+
+### Señales sinusoidales
+El coseno y el seno son señales fundamentales en el análisis de Fourier:  
+
+$$
+x_1[n] = \cos(2\pi f n T_s), \quad x_2[n] = \sin(2\pi f n T_s)
+$$  
+
+---
+
+### Coeficiente de correlación de Pearson
+Se define como:  
+
+$$
+r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2}\,\sqrt{\sum (y_i - \bar{y})^2}}
+$$  
 ## Paso a paso.
  Seleccionar la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)
 - Guardar los archivos .hea, .data, .apn en una misma carpeta junto con la señal

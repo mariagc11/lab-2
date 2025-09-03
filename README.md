@@ -57,9 +57,9 @@ Graficas de convolución:
 
 Este fragmento de código usa *Matplotlib* para visualizar las señales convolucionadas de Gaby, María José y Martin en una sola figura con tres subgráficos. Primero, se crea una figura de tamaño 12x6. Luego, se generan tres gráficos de tipo *stem*, que representan las señales discretas con líneas y marcadores.  
 
-- En el primer *subplot*, se grafica la convolución de Gime en color amarillo (`y-` para las líneas y `yo` para los marcadores).  
+- En el primer *subplot*, se grafica la convolución de Gaby en color amarillo (`y-` para las líneas y `yo` para los marcadores).  
 - En el segundo, se muestra la convolución de María José en rojo (`r-` y `ro`).  
-- En el tercero, se grafica la convolución de Nicole en verde (`g-` y `go`).  
+- En el tercero, se grafica la convolución de Martin en verde (`g-` y `go`).  
 
 Cada gráfico tiene su título, etiquetas para los ejes \( n \) y \( y[n] \), y *plt.tight_layout()* ajusta los espacios para que no se sobrepongan los elementos. Finalmente, *plt.show()* muestra la figura con las tres gráficas.
 

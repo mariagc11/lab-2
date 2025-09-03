@@ -5,7 +5,7 @@ Uno de los elementos tratados en la practica a continuación, es la convolución
 
 ### Convolución
 La convolución discreta se define como:  
-
+La convolución discreta es una operación matemática fundamental en el procesamiento digital de señales y en el análisis de sistemas lineales e invariantes en el tiempo 
 
  
 ---
@@ -24,7 +24,8 @@ El coseno y el seno son señales fundamentales en el análisis de Fourier:
 ---
 
 ### Coeficiente de correlación de Pearson
-Se define como:  
+El coeficiente de correlación de Pearson (r) mide el grado de relación lineal entre dos variables o señales donde definimos r como :
+		
 
 
 ## Paso a paso.

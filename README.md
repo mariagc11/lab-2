@@ -13,6 +13,7 @@ Dónde la convolución consiste en tomar la señal de entrada x[n], multiplicarl
 ### Correlación cruzada
 La correlación cruzada es una operación matemática que mide la similitud entre dos señales en función de un desfase o retardo (lag).
 Dadas dos señales discretas x[n] y y[n] , la correlación cruzada se define como:
+![Imagen de WhatsApp 2025-09-03 a las 18 20 01_960447c1](https://github.com/user-attachments/assets/63976c2f-b70f-4514-8cf1-0da810eb436e)
 
 Dónde: 
 * R_x_y [m] es la correlación cruzada en el desfase m 

@@ -7,7 +7,7 @@ Uno de los elementos tratados en la practica a continuación, es la convolución
 La convolución discreta se define como:  
 
 
-
+ 
 ---
 
 ### Correlación cruzada

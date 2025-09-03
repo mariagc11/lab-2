@@ -25,6 +25,7 @@ El coseno y el seno son señales fundamentales en el análisis de Fourier:
 
 ### Coeficiente de correlación de Pearson
 El coeficiente de correlación de Pearson (r) mide el grado de relación lineal entre dos variables o señales donde definimos r como :
+![Imagen de WhatsApp 2025-09-03 a las 17 45 55_e01d58fe](https://github.com/user-attachments/assets/59c607d3-1885-4fcf-a389-ed76f4812371)
 		
 
 
@@ -73,6 +74,7 @@ x_martin = np.array([5, 6, 0, 0, 5, 1, 1])
 Graficas de convolución:
 
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
+![Imagen de WhatsApp 2025-09-03 a las 17 47 00_a52bfd0b](https://github.com/user-attachments/assets/e43ac639-52e1-4966-b2be-94fcb1c06010)
 
 
 

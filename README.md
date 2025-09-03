@@ -1,10 +1,34 @@
-# lab-2
+#lab 2 
+## Introducción.
+Uno de los elementos tratados en la practica a continuación, es la convolución, para esto usamos los digitos del codigo universsitario y el documento de identificación de cada una de las integrantes, este proceso se realiza de manera manual y se implementa esto mismo de manera digital por medio de programación en Phyton mostrando la convolución de manera gráfica, con estas mismas señales se calcula la correlación. Por otro lado, se escogió una señal ECG de apnea del sueño, un trastorno caracterizado por pausas en la respiración durante el sueño, y su detección mediante señales electrocardiográficas (ECG). Se basa en la base de datos Apnea-ECG de PhysioNet, que contiene registros de ECG para el desarrollo de métodos automatizados de diagnóstico. El contenido ha sido elaborado por  Dr. Thomas Penzel de la Universidad Phillips, Marburgo, Alemania, con el objetivo de proporcionar una visión técnica sobre la apnea y su análisis a través de ECG. A partir de esta señal, aplicaremos la transformada de Fourier para analizar señales en el dominio de la frecuencia, lo que nos permitirá extraer información clave sobre su comportamiento en el dominio del tiempo (media, mediana, desviación estandar, máximos y mínimos) y el dominio de la frecuencia (la frecuencia media, frecuencia mediana y desviación etsandar de la frecuencia).
+
+## Paso a paso.
+ Seleccionar la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)
+- Guardar los archivos .hea, .data, .apn en una misma carpeta junto con la señal
+- Abrir Python, nombrar el archivo y guardarlo en la misma carpeta donde se encuentran los archivos .hea .data y apn.
+- Abrir de nuevo python y iniciar con la programación que explicaremos a continuación:
+  
+## Programación:
+Inicialmente agregamos las librerias:
+```  python
 import numpy as np
 import matplotlib.pyplot as plt
 import wfdb
 import scipy.signal as signal
 import os
-# Gime
+
+```
+- **NumPy** ( np) nos ayuda con el manejo de matrices y operaciones matemáticas.
+- **Matplotlib** ( plt) se usa para graficar datos.
+- **WFDB** ( wfdb) nos permite trabajar con señales fisiológicas como el ECG.
+- **SciPy Signal** ( signal) se usa para procesar señales (aunque en este código no se usa mucho).
+- **OS** ( os) nos permite manejar archivos y rutas en el sistema operativo.
+
+### Convolución:
+
+El código define las señales \( h[n] \) y \( x[n] \) para tres personas diferentes: Gime, María José y Nicole. Estas señales son representadas como arreglos de NumPy, donde \( h[n] \) corresponde al sistema y \( x[n] \) a la señal de entrada. Cada persona tiene su propio conjunto de datos, posiblemente para comparar cómo interactúan las señales en distintas situaciones.
+```
+# Gaby
 h_gaby = np.array([5, 6, 0, 0, 8, 7, 7])  # Sistema h[n]
 x_gaby = np.array([1, 0, 0, 0, 8, 1, 0, 4, 5, 6])  # Señal x[n]
 
@@ -16,20 +40,34 @@ x_maria = np.array([5, 6, 0, 0, 4, 3, 5 ])
 h_martin = np.array([1, 0, 1, 6, 5, 9, 2, 6, 7, 7])
 x_martin = np.array([5, 6, 0, 0, 5, 1, 1])
 
-# Función para calcular la convolución
-def calcular_convolucion(h, x):
-    return np.convolve(h, x, mode='full')
 
-# Cálculo de la convolución para cada persona
-y_gaby = calcular_convolucion(h_gaby, x_gaby)
-y_maria = calcular_convolucion(h_maria, x_maria)
-y_martin = calcular_convolucion(h_martin, x_martin)
+## Análisis de resultados.
 
-# Graficamos las convoluciones
+```
+Graficas de convolución:
+
+![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
+
+
+
+```
+
+```
+### Grafico:
+
+Este fragmento de código usa *Matplotlib* para visualizar las señales convolucionadas de Gime, María José y Nicole en una sola figura con tres subgráficos. Primero, se crea una figura de tamaño 12x6. Luego, se generan tres gráficos de tipo *stem*, que representan las señales discretas con líneas y marcadores.  
+
+- En el primer *subplot*, se grafica la convolución de Gime en color amarillo (`y-` para las líneas y `yo` para los marcadores).  
+- En el segundo, se muestra la convolución de María José en rojo (`r-` y `ro`).  
+- En el tercero, se grafica la convolución de Nicole en verde (`g-` y `go`).  
+
+Cada gráfico tiene su título, etiquetas para los ejes \( n \) y \( y[n] \), y *plt.tight_layout()* ajusta los espacios para que no se sobrepongan los elementos. Finalmente, *plt.show()* muestra la figura con las tres gráficas.
+
+```
+
 plt.figure(figsize=(12, 6))
-
 plt.subplot(3, 1, 1)
-plt.stem(y_gaby, linefmt='y-', markerfmt='yo', basefmt='k-')
+plt.stem(y_gime, linefmt='y-', markerfmt='yo', basefmt='k-')
 plt.title("Convolución de Gaby")
 plt.xlabel("n")
 plt.ylabel("y[n]")
@@ -41,31 +79,53 @@ plt.xlabel("n")
 plt.ylabel("y[n]")
 
 plt.subplot(3, 1, 3)
-plt.stem(y_martin, linefmt='g-', markerfmt='go', basefmt='k-')
-plt.title("Convolución de martin")
+plt.stem(y_nicole, linefmt='g-', markerfmt='go', basefmt='k-')
+plt.title("Convolución de Martin")
 plt.xlabel("n")
 plt.ylabel("y[n]")
 
 plt.tight_layout()
 plt.show()
 
-# ------------------------------------
-# PARTE B: CÁLCULO DE CORRELACIÓN
-# ------------------------------------
+```
+![Imagen de WhatsApp 2025-09-02 a las 20 50 31_e311e202](https://github.com/user-attachments/assets/3f875b5b-24f4-4563-afbc-67b8ed9fc721)
 
-# Parámetros para la correlación
+### Cálculo de correlación:
+
+El código calcula la correlación cruzada entre dos señales, un coseno y un seno de 100 Hz. Primero, define el tiempo de muestreo (`Ts = 1.25 ms`) y genera 9 muestras (`n = np.arange(9)`). Luego, crea las señales `x1` y `x2` usando funciones coseno y seno, respectivamente. Finalmente, con `np.correlate(x1, x2, mode='full')`, mide la similitud entre ambas en distintos desfases, lo que permite analizar su relación temporal.
+
+```
+Ts = 1.25e-3  
+n = np.arange(9) 
+f = 100  # Frecuencia en Hz
+
+
+x1 = np.cos(2 * np.pi * f * n * Ts)  # Señal x1[n]
+x2 = np.sin(2 * np.pi * f * n * Ts)  # Señal x2[n]
+
+
+correlacion = np.correlate(x1, x2, mode='full')
+```
+### Correlación:
+
 Ts = 1.25e-3  # Tiempo de muestreo en segundos
 n = np.arange(9)  # Nueve muestras según el documento
 f = 100  # Frecuencia en Hz
 
-# Definición de las señales
+Definición de las señales:
 x1 = np.cos(2 * np.pi * f * n * Ts)  # Señal x1[n]
 x2 = np.sin(2 * np.pi * f * n * Ts)  # Señal x2[n]
 
-# Cálculo de la correlación cruzada entre ambas señales
+Correlación cruzada entre ambas señales:
 correlacion = np.correlate(x1, x2, mode='full')
 
-# Gráfico de la correlación cruzada
+```
+```
+
+### Gráfico: 
+Este código genera una gráfica de la correlación cruzada entre las señales \( x_1[n] \) y \( x_2[n] \). Primero, se crea una figura de tamaño 8x4. Luego, con `plt.stem()`, se representa la correlación cruzada en un gráfico de líneas y marcadores azules (`b-` y `bo`), con una línea base negra (`k-`). El eje x muestra los desplazamientos de la correlación, que van desde `-len(x1) + 1` hasta `len(x1)`, indicando cómo varía la similitud entre las señales a diferentes desfases. Se añaden título, etiquetas y una cuadrícula para mejorar la visualización. Finalmente, `plt.show()` muestra el gráfico.
+
+```
 plt.figure(figsize=(8, 4))
 plt.stem(np.arange(-len(x1)+1, len(x1)), correlacion, linefmt='b-', markerfmt='bo', basefmt='k-')
 plt.title("Correlación cruzada entre x1[n] y x2[n]")
@@ -74,25 +134,38 @@ plt.ylabel("Correlación")
 plt.grid(True)
 plt.show()
 
-#SEGUNDO PUNTOimport numpy as np
+```
 
+![Imagen de WhatsApp 2025-09-02 a las 20 50 41_f85a483b](https://github.com/user-attachments/assets/a3532d6f-ea76-4542-aa57-b393cc716b7d)
 
-# Definir la ruta local
+### Segundo Punto:
+
+Primero, definimos la ruta y el nombre del archivo (`record_name = "a01"`) donde está almacenada la señal. Luego, usa la librería `wfdb` para leer tanto la señal (`wfdb.rdrecord()`) como sus anotaciones (`wfdb.rdann()`). Se extrae la señal del primer canal (`record.p_signal[:, 0]`) y la frecuencia de muestreo (`record.fs`). A partir de esto, se calcula el tiempo en segundos dividiendo el número de muestras por la frecuencia de muestreo. Finalmente, se obtienen estadísticas descriptivas de la señal, como la media, mediana, desviación estándar, valor máximo y mínimo, para analizar su comportamiento.
+
+```
 record_name = "a01"  # Nombre del archivo sin extensión
 record_path = r"C:\Users\majo1\OneDrive\Escritorio\señales\lab señales\lab 2"
 
-# Cargar la señal ECG desde archivos locales
+
 record = wfdb.rdrecord(os.path.join(record_path, record_name))
 annotation = wfdb.rdann(os.path.join(record_path, record_name), "apn")
 
-# Extraer la señal y la frecuencia de muestreo
+
 signal_data = record.p_signal[:, 0]  # Primer canal (ECG)
 sampling_rate = record.fs  # Frecuencia de muestreo
 
-# Tiempo en segundos
 time = np.arange(len(signal_data)) / sampling_rate
 
-# Estadísticas descriptivas
+```
+
+![Imagen de WhatsApp 2025-09-02 a las 20 50 54_29e52dfd](https://github.com/user-attachments/assets/c893d10e-5ef1-4277-b720-de0bd62aa9dd)
+
+
+### Estadisticas Descriptivas:
+
+Primero, obtiene la media (np.mean), mediana (np.median), desviación estándar (np.std), valor máximo (np.max) y valor mínimo (np.min) de los datos de la señal. Luego, imprime estos valores en pantalla con un formato claro, permitiendo analizar su distribución y variabilidad. Esto es útil para entender el comportamiento general de la señal antes de aplicar otros análisis más complejos.
+```
+
 time_mean = np.mean(signal_data)
 time_median = np.median(signal_data)
 time_std = np.std(signal_data)
@@ -106,7 +179,13 @@ print(f"Desviación estándar: {time_std}")
 print(f"Máximo: {time_max}")
 print(f"Mínimo: {time_min}")
 
-# Graficar la señal en el dominio del tiempo
+```
+### Graficar la señal en el dominio del tiempo:
+
+El código grafica la señal de ECG en función del tiempo. Primero, crea una figura de 10x4 y luego dibuja la señal con `plt.plot()`, etiquetando los ejes y agregando un título. También incluye una leyenda para identificar la señal y, al final, muestra la gráfica con `plt.show()`, permitiendo visualizar cómo varía la señal a lo largo del tiempo.
+
+```
+
 plt.figure(figsize=(10, 4))
 plt.plot(time, signal_data, label="ECG")
 plt.xlabel("Tiempo (s)")
@@ -115,12 +194,20 @@ plt.title("Señal ECG en el dominio del tiempo")
 plt.legend()
 plt.show()
 
-# Transformada de Fourier y Densidad Espectral
+```
+![image](https://github.com/user-attachments/assets/287b0263-ce2e-4913-8b3c-91a422e02b25)
+
+### Transformada de Fourier y Densidad Espectral:
+
+El código aplica la Transformada de Fourier a la señal de ECG para analizar sus frecuencias. Primero, calcula las frecuencias (`freqs`), obtiene la transformada (`fft_values`) y luego la densidad espectral de potencia (`power_spectrum`). Después, genera dos gráficas: una con la magnitud de la transformada para ver qué frecuencias están presentes y otra con la densidad espectral para visualizar cómo se distribuye la energía. Ambos gráficos incluyen etiquetas y una cuadrícula para facilitar su interpretación.
+
+```
+
 freqs = np.fft.rfftfreq(len(signal_data), d=1/sampling_rate)
 fft_values = np.fft.rfft(signal_data)
 power_spectrum = np.abs(fft_values) ** 2
 
-# Graficar la transformada de Fourier
+-Graficar la transformada de Fourier
 plt.figure(figsize=(10, 4))
 plt.plot(freqs, np.abs(fft_values))
 plt.xlabel("Frecuencia (Hz)")
@@ -129,7 +216,14 @@ plt.title("Transformada de Fourier de la señal ECG")
 plt.grid()
 plt.show()
 
-# Graficar la densidad espectral de potencia
+```
+![Imagen de WhatsApp 2025-09-02 a las 20 51 04_6571267b](https://github.com/user-attachments/assets/16bd30b2-2203-40b6-acd6-8dfc465d4015)
+
+
+
+```
+
+Graficar la densidad espectral de potencia
 plt.figure(figsize=(10, 4))
 plt.plot(freqs, power_spectrum)
 plt.xlabel("Frecuencia (Hz)")
@@ -138,7 +232,17 @@ plt.title("Densidad espectral de la señal ECG")
 plt.grid()
 plt.show()
 
-# Cálculo de estadísticas en el dominio de la frecuencia
+```
+![image](https://github.com/user-attachments/assets/232dec64-684b-4ba6-b5d8-b89372f42e81)
+
+
+### Cálculo de estadísticas en el dominio de la frecuencia:
+
+Acá se calcula y analiza estadísticas en el dominio de la frecuencia para la señal de ECG. Primero, obtiene la **frecuencia media** (`freq_mean`), ponderando cada frecuencia con su densidad espectral de potencia y dividiendo por la suma total de la potencia. Luego, calcula la **frecuencia mediana** (`freq_median`), ordenando la densidad espectral y seleccionando la frecuencia en la posición central. La **desviación estándar** (`freq_std`) se obtiene midiendo la dispersión de las frecuencias respecto a la media, también ponderada por la potencia.  
+
+Después, imprime estos valores y genera un **histograma de frecuencias**, donde `plt.hist()` divide el rango de frecuencias en 50 bins y pondera cada una según su potencia, permitiendo visualizar cómo se distribuye la energía en el espectro de la señal. Finalmente, se añaden etiquetas y una cuadrícula para mejorar la interpretación antes de mostrar la gráfica con `plt.show()`.
+
+```
 freq_mean = np.sum(freqs * power_spectrum) / np.sum(power_spectrum)
 freq_median = freqs[np.argsort(power_spectrum)[len(power_spectrum)//2]]
 freq_std = np.sqrt(np.sum((freqs - freq_mean)**2 * power_spectrum) / np.sum(power_spectrum))
@@ -157,78 +261,19 @@ plt.title("Histograma de frecuencias de la señal ECG")
 plt.grid()
 plt.show()
 
-# --- PEARSON PARA LA SEÑAL ECG ---
 
-# 1) Pearson entre señal original y reconstruida (IFFT)
-signal_reconstructed = np.fft.irfft(fft_values, n=len(signal_data))
-pearson_ecg_ifft = np.corrcoef(signal_data, signal_reconstructed)[0, 1]
-print(f"Pearson ECG original vs IFFT: {pearson_ecg_ifft:.6f}")
 
-# 2) Pearson entre señal original y señal filtrada (0.5–40 Hz)
-def bandpass(signal_in, fs, lowcut=0.5, highcut=40.0, order=4):
-    nyq = 0.5 * fs
-    b, a = signal.butter(order, [lowcut/nyq, highcut/nyq], btype='band')
-    return signal.filtfilt(b, a, signal_in)
+```
+![image](https://github.com/user-attachments/assets/12727ccc-c4ed-4dbd-97fa-6cd0f6cbe6e4)
 
-ecg_filtered = bandpass(signal_data, sampling_rate, 0.5, 40.0, order=4)
-pearson_ecg_filtered = np.corrcoef(signal_data, ecg_filtered)[0, 1]
-print(f"Pearson ECG original vs filtrada (0.5–40 Hz): {pearson_ecg_filtered:.6f}")
+## Conclusión.
 
-# 3) (Opcional) Pearson por desfase: original vs. versión desplazada k muestras
-def pearson_lag(x, y, lag=0):
-    if lag > 0:
-        return np.corrcoef(x[lag:], y[:-lag])[0, 1]
-    elif lag < 0:
-        lag = -lag
-        return np.corrcoef(x[:-lag], y[lag:])[0, 1]
-    else:
-        return np.corrcoef(x, y)[0, 1]
+En este laboratorio, exploramos la convolución y la correlación como herramientas clave en el procesamiento digital de señales. A través de ejercicios prácticos, comprendimos cómo la convolución permite analizar la respuesta de un sistema a una señal de entrada, mientras que la correlación nos ayuda a medir la similitud entre señales en distintos momentos. Además, aplicamos la Transformada de Fourier para examinar la señal en el dominio de la frecuencia, calculando su densidad espectral de potencia y sus estadísticas descriptivas.
 
-# ejemplo: evaluar lags cercanos al latido (p.ej., ±50 muestras)
-lags = np.arange(-50, 51)
-pearson_vs_lag = [pearson_lag(signal_data, ecg_filtered, lag=int(k)) for k in lags]
-best_idx = int(np.nanargmax(pearson_vs_lag))
-print(f"Máximo Pearson vs filtrada ocurre en lag={lags[best_idx]} muestras, r={pearson_vs_lag[best_idx]:.6f}")
-# ------------------------------
-# GRAFICAR RESULTADOS DE PEARSON
-# ------------------------------
+La implementación en Python facilitó el análisis y la visualización de los resultados, permitiéndonos interpretar mejor la información contenida en las señales. Esto es fundamental en aplicaciones como el procesamiento de señales biomédicas, donde la correcta identificación de patrones en ECG u otras señales fisiológicas puede mejorar el diagnóstico y la toma de decisiones clínicas. En general, este laboratorio reforzó la importancia de estas técnicas en el análisis y manipulación de señales digitales.
 
-# 1) Graficar señal original y filtrada para comparar
-plt.figure(figsize=(12, 4))
-plt.plot(time, signal_data, label="ECG Original", alpha=0.7)
-plt.plot(time, ecg_filtered, label="ECG Filtrada (0.5–40 Hz)", alpha=0.7)
-plt.xlabel("Tiempo (s)")
-plt.ylabel("Amplitud")
-plt.title("Comparación: ECG original vs filtrada")
-plt.legend()
-plt.grid(True)
-plt.show()
-
-# ------------------------------------
-# CALCULO PEARSON VS LAG (YA CORREGIDO)
-# ------------------------------------
-
-def pearson_lag(x, y, lag=0):
-    """ Calcula correlación de Pearson entre dos señales con desfase (lag) """
-    if lag > 0:
-        return np.corrcoef(x[lag:], y[:-lag])[0, 1]
-    elif lag < 0:
-        lag = -lag
-        return np.corrcoef(x[:-lag], y[lag:])[0, 1]
-    else:
-        return np.corrcoef(x, y)[0, 1]
-
-# Definir rango de lags (ej: ±200 muestras, aprox medio segundo a 400 Hz)
-lags = np.arange(-200, 201)
-pearson_vs_lag = [pearson_lag(signal_data, ecg_filtered, lag=int(k)) for k in lags]
-
-# ------------------------------------
-# GRAFICAR CORRELACIÓN PEARSON VS LAG
-# ------------------------------------
-plt.figure(figsize=(8, 4))
-plt.stem(lags, pearson_vs_lag, basefmt="k-")
-plt.xlabel("Lag (muestras)")
-plt.ylabel("Coeficiente de Pearson")
-plt.title("Correlación de Pearson ECG original vs filtrada según lag")
-plt.grid(True)
-plt.show()
+## Referencias.
+- Oppenheim, AV, y Willsky, AS (1996). Señales y sistemas (2.ª ed.). Prentice Hall.
+- Proakis, JG, y Manolakis, DG (2007). Procesamiento de señales digitales: principios, algoritmos y aplicaciones (4.ª ed.). Pearson
+- Cohen, L. (1995). Análisis de tiempo-frecuencia . Prentice Hall.
+- Clifford, GD, Azuaje, F., y McSharry, PE (2006). Métodos y herramientas avanzad

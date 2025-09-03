@@ -67,7 +67,7 @@ Cada gráfico tiene su título, etiquetas para los ejes \( n \) y \( y[n] \), y 
 
 plt.figure(figsize=(12, 6))
 plt.subplot(3, 1, 1)
-plt.stem(y_gime, linefmt='y-', markerfmt='yo', basefmt='k-')
+plt.stem(y_gaby, linefmt='y-', markerfmt='yo', basefmt='k-')
 plt.title("Convolución de Gaby")
 plt.xlabel("n")
 plt.ylabel("y[n]")
@@ -79,7 +79,7 @@ plt.xlabel("n")
 plt.ylabel("y[n]")
 
 plt.subplot(3, 1, 3)
-plt.stem(y_nicole, linefmt='g-', markerfmt='go', basefmt='k-')
+plt.stem(y_Martin, linefmt='g-', markerfmt='go', basefmt='k-')
 plt.title("Convolución de Martin")
 plt.xlabel("n")
 plt.ylabel("y[n]")

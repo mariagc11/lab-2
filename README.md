@@ -4,21 +4,27 @@ Uno de los elementos tratados en la practica a continuación, es la convolución
 ## Marco Teórico
 
 ### Convolución
-La convolución discreta se define como:  
-La convolución discreta es una operación matemática fundamental en el procesamiento digital de señales y en el análisis de sistemas lineales e invariantes en el tiempo 
+la convolución discreta describe cómo una señal se transforma al pasar por un sistema LTI ( lineales e invariantes en el tiempo). 
+Dónde la convolución consiste en tomar la señal de entrada x[n], multiplicarla por una versión invertida y desplazada de h[n], y sumar los resultados para cada n 
 
  
 ---
 
 ### Correlación cruzada
-Mide el nivel de semejanza entre dos señales bajo un desplazamiento $m$:  
+La correlación cruzada es una operación matemática que mide la similitud entre dos señales en función de un desfase o retardo (lag).
+Dadas dos señales discretas x[n] y y[n] , la correlación cruzada se define como:
+
+Dónde: 
+* R_x_y [m] es la correlación cruzada en el desfase m 
+* m puede ser positivo o negativo (adelantado o atrasado )
+* Parecida a la convolucion pero sin invertir una de las señales
 
 
 
 ---
 
 ### Señales sinusoidales
-El coseno y el seno son señales fundamentales en el análisis de Fourier:  
+El coseno y el seno son señales fundamentales en el análisis de Fourier las cuales se pueden utilizar de diversas formas en las toma y análisis de señales 
 
 
 ---

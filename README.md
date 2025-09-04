@@ -239,6 +239,11 @@ plt.show()
 
 ### Segundo Punto:
 
+Se selecciona la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)
+- Guardar los archivos .hea, .data, .apn en una misma carpeta junto con la señal
+- Abrir Python, nombrar el archivo y guardarlo en la misma carpeta donde se encuentran los archivos .hea .data y apn.
+- Abrir de nuevo python y iniciar con la programación que explicaremos a continuación:
+
 Primero, definimos la ruta y el nombre del archivo (`record_name = "a01"`) donde está almacenada la señal. Luego, usa la librería `wfdb` para leer tanto la señal (`wfdb.rdrecord()`) como sus anotaciones (`wfdb.rdann()`). Se extrae la señal del primer canal (`record.p_signal[:, 0]`) y la frecuencia de muestreo (`record.fs`). A partir de esto, se calcula el tiempo en segundos dividiendo el número de muestras por la frecuencia de muestreo. Finalmente, se obtienen estadísticas descriptivas de la señal, como la media, mediana, desviación estándar, valor máximo y mínimo, para analizar su comportamiento.
 
 ```

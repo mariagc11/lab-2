@@ -403,7 +403,7 @@ El máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la
 <img width="1280" height="635" alt="image" src="https://github.com/user-attachments/assets/26a06b5a-c626-4aa8-8a81-4ec63ebc7dbd" />
 
 Estas tres gráficas muestran la convolución, que básicamente nos dice cómo responde un sistema cuando le damos una señal de entrada. En el caso de Gaby, la salida tiene picos grandes entre las posiciones 8 y 12 porque en su entrada había valores altos que activaron al sistema. En María José, la salida va creciendo poco a poco hasta llegar a un máximo alrededor de la posición 9 y luego empieza a bajar. En Martín, también hay un máximo en la misma zona, pero la forma es más corta y concentrada. En pocas palabras: cada señal de entrada genera una salida distinta, y la convolución nos muestra cómo el sistema “mezcla” la forma de la respuesta con los valores de la entrada.
----
+
 ## 2) Correlación cruzada
 
 <img width="978" height="499" alt="image" src="https://github.com/user-attachments/assets/dd73c3a2-5d6d-4a6a-a267-ce01a1f91c80" />

@@ -401,20 +401,20 @@ El máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la
 
 # Analisis y resultados 
 
-## 1) Convolución 
+##  Convolución 
 
 <img width="1280" height="635" alt="image" src="https://github.com/user-attachments/assets/26a06b5a-c626-4aa8-8a81-4ec63ebc7dbd" />
 
 Estas tres gráficas muestran la convolución, que básicamente nos dice cómo responde un sistema cuando le damos una señal de entrada. En el caso de Gaby, la salida tiene picos grandes entre las posiciones 8 y 12 porque en su entrada había valores altos que activaron al sistema. En María José, la salida va creciendo poco a poco hasta llegar a un máximo alrededor de la posición 9 y luego empieza a bajar. En Martín, también hay un máximo en la misma zona, pero la forma es más corta y concentrada. En pocas palabras: cada señal de entrada genera una salida distinta, y la convolución nos muestra cómo el sistema “mezcla” la forma de la respuesta con los valores de la entrada.
 
-## 2) Correlación cruzada
+##  Correlación cruzada
 
 <img width="978" height="499" alt="image" src="https://github.com/user-attachments/assets/dd73c3a2-5d6d-4a6a-a267-ce01a1f91c80" />
 
 Esta gráfica muestra la correlación cruzada entre una señal coseno y una seno. Como estas dos señales están desfasadas 90°, en teoría deberían ser ortogonales, es decir, su correlación en cero debería ser cercana a 0. Eso es lo que vemos aquí: en el centro la correlación es casi nula. Los valores positivos y negativos que aparecen en otros desplazamientos (lags) son producto de que usamos pocas muestras y no cubrimos un periodo completo. En resumen: la gráfica confirma que coseno y seno son casi independientes, aunque en la práctica aparecen pequeños valores residuales por el muestreo limitado.
 
 
-## 3) ECG en el dominio del tiempo 
+##  ECG en el dominio del tiempo 
 
 <img width="1233" height="498" alt="image" src="https://github.com/user-attachments/assets/37db0bf6-665c-451a-9aa6-207784274704" />
 
@@ -422,7 +422,7 @@ Aquí vemos la señal de ECG en el dominio del tiempo. El eje horizontal represe
 
 👉 En resumen: esta gráfica confirma que la señal está centrada en cero, con amplitudes normales para un ECG real, aunque a esta escala no se distinguen los detalles de cada latido.
 
-## 4)Estadísticas en el dominio del tiempo
+## Estadísticas en el dominio del tiempo
 
 <img width="425" height="124" alt="image" src="https://github.com/user-attachments/assets/01ee583c-0311-42cd-ad04-337c41780cd2" />
 
@@ -430,7 +430,7 @@ Estas son las estadísticas de la señal ECG en el dominio del tiempo. La media 
 
 👉 En resumen: la señal está centrada en cero, con amplitudes y variabilidad normales para un ECG real.
 
-## 5) Transformada de Fourier de la señal ECG
+##  Transformada de Fourier de la señal ECG
 
 <img width="1234" height="480" alt="image" src="https://github.com/user-attachments/assets/88f7d2b8-6984-46cd-948c-220d60429f6d" />
 
@@ -438,7 +438,7 @@ Esta es la Transformada de Fourier del ECG, que nos muestra la señal en el domi
 
 👉 En resumen: el espectro confirma que el ECG tiene su información útil en bajas frecuencias, mientras que lo demás es principalmente ruido o componentes indeseados.
 
-## 6) Densidad espectral de la señal ECG
+##  Densidad espectral de la señal ECG
 
 <img width="1224" height="487" alt="image" src="https://github.com/user-attachments/assets/101bd143-1354-4c52-aba9-1aed2478a103" />
 
@@ -446,7 +446,7 @@ Esta gráfica muestra la densidad espectral de potencia del ECG, es decir, cuán
 
 👉 En resumen: la gráfica demuestra que la energía útil del ECG está en bajas frecuencias, mientras que lo que aparece en frecuencias muy altas suele ser ruido.
 
-## 7) Estadísticas en el dominio de la frecuencia
+##  Estadísticas en el dominio de la frecuencia
 
 <img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/9e452da9-6c3d-4839-871b-e9dd7eefef92" />
 
@@ -454,7 +454,7 @@ Estas son las estadísticas del ECG en el dominio de la frecuencia. La frecuenci
 
 👉 En resumen: el ECG concentra su energía en torno a los 10–20 Hz, lo cual coincide con lo esperado fisiológicamente.
 
-## 8) Histograma de frecuencias ponderado por potencia
+##  Histograma de frecuencias ponderado por potencia
 
 <img width="1219" height="496" alt="image" src="https://github.com/user-attachments/assets/7a8c3b80-c171-4335-9773-9944e4eef56e" />
 
@@ -463,7 +463,7 @@ Esta gráfica muestra el histograma de frecuencias del ECG, es decir, cómo se d
 👉 En resumen: el histograma confirma que la energía útil del ECG está en bajas frecuencias, mientras que las altas frecuencias tienen poca contribución y suelen corresponder a ruido.
 
 
-## 9) Comparacion ECG original vs filtrada 
+## Comparacion ECG original vs filtrada 
 
 <img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/eb6226ba-1dd7-47ed-a381-4457b510010a" />
 
@@ -472,7 +472,7 @@ Esta gráfica compara la señal ECG original con la ECG filtrada entre 0.5 y 40 
 👉 En resumen: el filtrado limpia la señal sin distorsionar su morfología, asegurando que los latidos se conserven intactos.
 
 
-## 11) Person 
+## Person 
 
 <img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/069e7afb-e259-47bd-aba8-ad5ab24eb3bb" />
 
@@ -501,13 +501,9 @@ Esta gráfica muestra cómo cambia la correlación de Pearson entre el ECG origi
 
 ## Conclusión.
 
-En este laboratorio, exploramos la convolución y la correlación como herramientas clave en el procesamiento digital de señales. A través de ejercicios prácticos, comprendimos cómo la convolución permite analizar la respuesta de un sistema a una señal de entrada, mientras que la correlación nos ayuda a medir la similitud entre señales en distintos momentos. Además, aplicamos la Transformada de Fourier para examinar la señal en el dominio de la frecuencia, calculando su densidad espectral de potencia y sus estadísticas descriptivas.
+En este análisis se comprobó cómo distintas herramientas matemáticas permiten estudiar la señal de ECG desde diferentes perspectivas. La convolución mostró cómo un sistema responde ante diferentes entradas, confirmando la propiedad de superposición. La correlación cruzada evidenció la relación entre señales sinusoidales (coseno y seno), resaltando su ortogonalidad. Por su parte, el análisis en el dominio del tiempo y la frecuencia permitió observar que el ECG es una señal centrada en cero, con amplitudes normales y cuya energía principal se concentra en bajas frecuencias (0.5–40 Hz), que corresponden a la actividad fisiológica del corazón.
 
-La implementación en Python facilitó el análisis y la visualización de los resultados, permitiéndonos interpretar mejor la información contenida en las señales. Esto es fundamental en aplicaciones como el procesamiento de señales biomédicas, donde la correcta identificación de patrones en ECG u otras señales fisiológicas puede mejorar el diagnóstico y la toma de decisiones clínicas. En general, este laboratorio reforzó la importancia de estas técnicas en el análisis y manipulación de señales digitales.
-
-Al hacer la convolucion en físico aprendemos con más práctica como funciona y que es, viendo como se transforma y se hace una nueva señal a partir de dos señales distintas donde no dependemos de una máquina nomás que con un codigo corto nos resuelve todo el trabajo, ya que así vamos más a fondo al comprender el tema visto 
-
-Además de afianzar los fundamentos matemáticos del procesamiento de señales, este laboratorio permitió evidenciar la relevancia práctica de dichas técnicas en contextos reales como el análisis de señales biomédicas. La aplicación de convolución, correlación y transformada de Fourier no solo aportó al entendimiento de cómo se comportan las señales en diferentes dominios, sino que también mostró el potencial de estas herramientas para la detección de patrones clínicamente relevantes. Esto resalta la importancia de integrar la teoría con la experimentación computacional, fomentando la capacidad de aplicar métodos digitales al diagnóstico y monitoreo en ingeniería biomédica.
+Además, la comparación entre la señal original y la filtrada demostró que el filtrado elimina ruido y deriva de línea base sin distorsionar la morfología de la señal ni introducir retardos, lo cual fue confirmado con el coeficiente de Pearson cercano a 1 y el máximo de correlación en lag = 0. En conclusión, el procesamiento aplicado garantiza que la información clínica del ECG se mantenga intacta, facilitando un análisis confiable y más limpio de la señal.
 
 ## Referencias.
 - Oppenheim, AV, y Willsky, AS (1996). Señales y sistemas (2.ª ed.). Prentice Hall.

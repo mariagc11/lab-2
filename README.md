@@ -373,7 +373,7 @@ plt.show()
 
 ## Datos estadisticos
 <img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/7886532b-d9ee-481e-88f7-2d92931775b3" />
-<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/f10f9aac-9ecf-40ab-af24-115647a1b985" />
+
 
 ## Coeficiente de correlación de Pearson
 

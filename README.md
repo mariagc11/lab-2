@@ -88,8 +88,10 @@ Original vs filtrada: r alto pero < 1 (muestra similitud con reducción de ruido
 
 Pearson vs lag: permite ver si el filtrado generó algún desfase.
 
-## Paso a paso.
- Seleccionar la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)
+---
+## Procedimiento practica # 2
+
+Se selecciona la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)
 - Guardar los archivos .hea, .data, .apn en una misma carpeta junto con la señal
 - Abrir Python, nombrar el archivo y guardarlo en la misma carpeta donde se encuentran los archivos .hea .data y apn.
 - Abrir de nuevo python y iniciar con la programación que explicaremos a continuación:

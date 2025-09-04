@@ -396,7 +396,7 @@ Si el máximo ocurre en lag = 0 → no hay retardo (gracias a filtfilt que es de
 El máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la alineación de la señal.
 
 
-## Analisis y resultados 
+### Analisis y resultados 
 
 ## 1) Convolución 
 
@@ -410,8 +410,6 @@ Estas tres gráficas muestran la convolución, que básicamente nos dice cómo r
 
 Esta gráfica muestra la correlación cruzada entre una señal coseno y una seno. Como estas dos señales están desfasadas 90°, en teoría deberían ser ortogonales, es decir, su correlación en cero debería ser cercana a 0. Eso es lo que vemos aquí: en el centro la correlación es casi nula. Los valores positivos y negativos que aparecen en otros desplazamientos (lags) son producto de que usamos pocas muestras y no cubrimos un periodo completo. En resumen: la gráfica confirma que coseno y seno son casi independientes, aunque en la práctica aparecen pequeños valores residuales por el muestreo limitado.
 
-
----
 
 ## 3) ECG en el dominio del tiempo 
 
@@ -428,7 +426,7 @@ Aquí vemos la señal de ECG en el dominio del tiempo. El eje horizontal represe
 Estas son las estadísticas de la señal ECG en el dominio del tiempo. La media es prácticamente 0, lo cual indica que la señal está bien centrada alrededor de la línea base. La mediana es −0.03, muy cercana a cero, confirmando la simetría de los datos. La desviación estándar es 0.24, lo que muestra una variabilidad moderada típica en el ECG. El valor máximo es 2.44 mV y el mínimo es −1.65 mV, que corresponden a los picos positivos y negativos de los latidos.
 
 👉 En resumen: la señal está centrada en cero, con amplitudes y variabilidad normales para un ECG real.
----
+
 ## 5) Transformada de Fourier de la señal ECG
 
 <img width="1234" height="480" alt="image" src="https://github.com/user-attachments/assets/88f7d2b8-6984-46cd-948c-220d60429f6d" />
@@ -437,8 +435,6 @@ Esta es la Transformada de Fourier del ECG, que nos muestra la señal en el domi
 
 👉 En resumen: el espectro confirma que el ECG tiene su información útil en bajas frecuencias, mientras que lo demás es principalmente ruido o componentes indeseados.
 
-
----
 ## 6) Densidad espectral de la señal ECG
 
 <img width="1224" height="487" alt="image" src="https://github.com/user-attachments/assets/101bd143-1354-4c52-aba9-1aed2478a103" />
@@ -454,7 +450,7 @@ Esta gráfica muestra la densidad espectral de potencia del ECG, es decir, cuán
 Estas son las estadísticas del ECG en el dominio de la frecuencia. La frecuencia media es de aproximadamente 12.1 Hz, lo que refleja que la mayor parte de la energía de la señal se concentra en la zona típica del complejo QRS. La frecuencia mediana aparece en 30.8 Hz, aunque este valor está un poco alto porque depende del método de cálculo, y en la práctica debería ubicarse más cerca de 10–15 Hz. Finalmente, la desviación estándar es de 7.19 Hz, lo que indica que la energía de la señal está distribuida de forma relativamente compacta en bajas frecuencias.
 
 👉 En resumen: el ECG concentra su energía en torno a los 10–20 Hz, lo cual coincide con lo esperado fisiológicamente.
----
+
 ## 8) Histograma de frecuencias ponderado por potencia
 
 <img width="1219" height="496" alt="image" src="https://github.com/user-attachments/assets/7a8c3b80-c171-4335-9773-9944e4eef56e" />
@@ -463,7 +459,7 @@ Esta gráfica muestra el histograma de frecuencias del ECG, es decir, cómo se d
 
 👉 En resumen: el histograma confirma que la energía útil del ECG está en bajas frecuencias, mientras que las altas frecuencias tienen poca contribución y suelen corresponder a ruido.
 
----
+
 ## 9) Comparacion ECG original vs filtrada 
 
 <img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/eb6226ba-1dd7-47ed-a381-4457b510010a" />
@@ -471,7 +467,7 @@ Esta gráfica muestra el histograma de frecuencias del ECG, es decir, cómo se d
 Esta gráfica compara la señal ECG original con la ECG filtrada entre 0.5 y 40 Hz. A simple vista parecen casi iguales, lo que significa que el filtrado conserva la forma de la señal. La diferencia está en que la señal filtrada elimina la deriva de baja frecuencia y el ruido de alta frecuencia, quedándose solo con la información útil del corazón.
 
 👉 En resumen: el filtrado limpia la señal sin distorsionar su morfología, asegurando que los latidos se conserven intactos.
----
+
 
 ## 11) Person 
 
@@ -488,7 +484,7 @@ Esta gráfica muestra cómo cambia la correlación de Pearson entre el ECG origi
 
 👉 En resumen: el filtrado no introduce retraso y mantiene la forma de la señal, solo eliminando ruido.
 
----
+
 
 ## ✅ Cierre general
 

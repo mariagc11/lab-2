@@ -456,14 +456,24 @@ Frecuencia mediana ≈ 30.85 Hz → valor incorrecto (calculado por ordenamiento
 σf ≈ 7.19 Hz → dispersión moderada del espectro.
 
 la media es coherente, pero la mediana debe corregirse con un método acumulativo.
+
 ---
 ## 8) Comparación temporal: original vs filtrada (0.5–40 Hz)
 
+Gráficamente se ven idénticas.
+
+Pearson ≈ 0.996 confirma alta similitud.
+
+El filtrado elimina ruido de línea base y alta frecuencia pero conserva la morfología.
+
+el filtrado no introduce retardo y mantiene alineada la señal.
 
 ---
-
 ## 9) Pearson vs lag (original vs filtrada)
 
+Pico máximo en lag=0, r≈0.995 → no hay desfase gracias a filtfilt (fase cero).
+
+Lóbulos simétricos laterales → producto de la naturaleza cuasiperiódica del ECG y el filtrado pasa banda.
 
 
 ---

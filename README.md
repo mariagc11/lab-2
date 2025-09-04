@@ -152,31 +152,7 @@ y_maria  = calcular_convolucion(h_maria,  x_maria)
 y_martin = calcular_convolucion(h_martin, x_martin)
 
 ```
-Esta parte del codigo describe la visualización grarfica de cada convolución
 
-```
-plt.figure(figsize=(12, 6))
-
-plt.subplot(3, 1, 1); plt.stem(y_gaby,   linefmt='y-', markerfmt='yo', basefmt='k-')
-plt.title("Convolución de Gaby");       plt.xlabel("n"); plt.ylabel("y[n]")
-
-plt.subplot(3, 1, 2); plt.stem(y_maria,  linefmt='r-', markerfmt='ro', basefmt='k-')
-plt.title("Convolución de María José"); plt.xlabel("n"); plt.ylabel("y[n]")
-
-plt.subplot(3, 1, 3); plt.stem(y_martin, linefmt='g-', markerfmt='go', basefmt='k-')
-plt.title("Convolución de martin");     plt.xlabel("n"); plt.ylabel("y[n]")
-
-plt.tight_layout(); plt.show()
-
-```
-
-
-
-
-
-```
-
-```
 ### Grafico:
 
 Este fragmento de código usa *Matplotlib* para visualizar las señales convolucionadas de Gaby, María José y Martin en una sola figura con tres subgráficos. Primero, se crea una figura de tamaño 12x6. Luego, se generan tres gráficos de tipo *stem*, que representan las señales discretas con líneas y marcadores.  

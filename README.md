@@ -377,6 +377,8 @@ plt.show()
 
 ## Coeficiente de correlación de Pearson
 
+<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/f10f9aac-9ecf-40ab-af24-115647a1b985" />
+
 ## Original vs reconstruida
 ```
 signal_reconstructed = np.fft.irfft(fft_values, n=len(signal_data))
@@ -409,8 +411,20 @@ Si el máximo ocurre en lag = 0 → no hay retardo (gracias a filtfilt que es de
 📌 Interpretación: el máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la alineación de la señal.
 
 <img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/ef0a7da1-91da-41e6-a06b-cd273148200f" />
+
+## Correlación de Pearson ECG original vs filtrada según lag
+
 <img width="985" height="495" alt="image" src="https://github.com/user-attachments/assets/7b3fed74-4d2e-4825-9df5-49166ef5989f" />
 
+La gráfica muestra cómo varía la similitud entre el ECG original y el filtrado cuando se aplica un desfase (lag).
+
+El máximo está en lag = 0 con r ≈ 1, lo que significa que ambas señales son prácticamente iguales y están alineadas.
+
+Al mover una señal respecto a la otra, la correlación cae hacia valores cercanos a 0 o negativos → ya no coinciden.
+
+Los lóbulos alrededor del cero reflejan que el filtrado eliminó ciertas frecuencias, pero sin alterar la forma principal del ECG.
+
+✅ Conclusión corta para exponer: El filtrado limpió la señal sin introducir retardos ni distorsionar la morfología, lo que garantiza que la información fisiológica del ECG se conserva.
 ## Analisis y resultados 
 ## 1) Convolución (tres subgráficas)
 En la convolución de Gaby su salida tiene una cola larga, lo cual indica que el sistema (h[n]) tiene memoria extendida y que la señal de entrada tuvo impulsos en posiciones clave que se acumularon. El máximo valor de y[n] refleja una coincidencia fuerte entre un valor grande en x[n] y un sector energético de h[n].

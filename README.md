@@ -408,7 +408,7 @@ Compara la correlación variando el desfase.
 
 Si el máximo ocurre en lag = 0 → no hay retardo (gracias a filtfilt que es de fase cero).
 
-📌 Interpretación: el máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la alineación de la señal.
+El máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la alineación de la señal.
 
 <img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/ef0a7da1-91da-41e6-a06b-cd273148200f" />
 

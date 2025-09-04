@@ -373,6 +373,8 @@ plt.show()
 ```
 ![Imagen de WhatsApp 2025-09-02 a las 20 51 24_24ac0e8e](https://github.com/user-attachments/assets/3d64828f-dc3b-431c-a351-20f73063d40d)
 
+## Datos estadisticos
+<img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/7886532b-d9ee-481e-88f7-2d92931775b3" />
 
 
 ## Analisis y resultados 

@@ -112,7 +112,7 @@ import os
 - **SciPy Signal** ( signal) se usa para procesar señales (aunque en este código no se usa mucho).
 - **OS** ( os) nos permite manejar archivos y rutas en el sistema operativo.
 
-### Convolución:
+### Convolución de secuencias discretas
 
 El código define las señales \( h[n] \) y \( x[n] \) para tres personas diferentes: Gaby, María José y Martin. Estas señales son representadas como arreglos de NumPy, donde \( h[n] \) corresponde al sistema y \( x[n] \) a la señal de entrada. Cada persona tiene su propio conjunto de datos, posiblemente para comparar cómo interactúan las señales en distintas situaciones.
 ```
@@ -127,9 +127,6 @@ x_maria = np.array([5, 6, 0, 0, 4, 3, 5 ])
 # martin
 h_martin = np.array([1, 0, 1, 6, 5, 9, 2, 6, 7, 7])
 x_martin = np.array([5, 6, 0, 0, 5, 1, 1])
-
-
-## Análisis de resultados.
 
 ```
 Graficas de convolución:

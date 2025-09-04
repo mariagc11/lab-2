@@ -1,4 +1,4 @@
-#lab 2 
+# lab 2 
 ## Introducción. 
 Uno de los elementos tratados en la practica a continuación, es la convolución, para esto usamos los digitos del codigo universitario y el documento de identificación de cada una de las integrantes, este proceso se realiza de manera manual y se implementa esto mismo de manera digital por medio de programación en Phyton mostrando la convolución de manera gráfica, con estas mismas señales se calcula la correlación. Por otro lado, se escogió una señal ECG de apnea del sueño, un trastorno caracterizado por pausas en la respiración durante el sueño, y su detección mediante señales electrocardiográficas (ECG). Se basa en la base de datos Apnea-ECG de PhysioNet, que contiene registros de ECG para el desarrollo de métodos automatizados de diagnóstico. El contenido ha sido elaborado por  Dr. Thomas Penzel de la Universidad Phillips, Marburgo, Alemania, con el objetivo de proporcionar una visión técnica sobre la apnea y su análisis a través de ECG. A partir de esta señal, aplicaremos la transformada de Fourier para analizar señales en el dominio de la frecuencia, lo que nos permitirá extraer información clave sobre su comportamiento en el dominio del tiempo (media, mediana, desviación estandar, máximos y mínimos) y el dominio de la frecuencia (la frecuencia media, frecuencia mediana y desviación etsandar de la frecuencia).
 
@@ -90,19 +90,6 @@ Original vs filtrada: r alto pero < 1 (muestra similitud con reducción de ruido
 Pearson vs lag: permite ver si el filtrado generó algún desfase.
 
 ---
-## Densidad espectral de potencia (PSD)
-
-La densidad espectral de potencia indica cómo se distribuye la energía de una señal en función de la frecuencia.
-
-Se calcula a partir de la siguiente ecuación:
-
-<img width="179" height="50" alt="image" src="https://github.com/user-attachments/assets/47672310-d86f-4c17-b9a2-b39fc8880dd4" />
-
-X(f) nos indica que es la transformada de Fourier 
-
----
----
-
 ## Procedimiento practica # 2 
 
 Primero se realiza la definición de las señales estableciendo el sistema discreto h[n] a partir de los dígitos del codigo estudiantil de cada integramnte del grupo, asimismo la señal de entrada x[n] a partir de los digitos de la cédula de los mismo integrantes del grupo. 
@@ -110,10 +97,8 @@ Luego se realiza el cálculo de la convolución manual, donde se realiza la oper
 
 Calculos de Maria Jose 
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
-
 Calculos de Martin
 ![Imagen de WhatsApp 2025-09-03 a las 17 47 00_a52bfd0b](https://github.com/user-attachments/assets/e43ac639-52e1-4966-b2be-94fcb1c06010)
-
 Calculos de Gabriela
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/32def052-d6a5-434c-bef5-8115d1c78527" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/6e6c3258-f641-47c8-8783-72e4c3ae3a17" />
@@ -202,7 +187,7 @@ plt.tight_layout()
 plt.show()
 
 ```
-![Imagen de WhatsApp 2025-09-02 a las 20 50 31_e311e202](https://github.com/user-attachments/assets/3f875b5b-24f4-4563-afbc-67b8ed9fc721)
+
 
 ### Parte B 
 ### Cálculo de correlación:
@@ -248,7 +233,6 @@ plt.show()
 
 ```
 
-![Imagen de WhatsApp 2025-09-02 a las 20 50 41_f85a483b](https://github.com/user-attachments/assets/a3532d6f-ea76-4542-aa57-b393cc716b7d)
 
 ### Segundo Punto:
 
@@ -275,7 +259,6 @@ time = np.arange(len(signal_data)) / sampling_rate
 
 ```
 
-![Imagen de WhatsApp 2025-09-02 a las 20 50 54_29e52dfd](https://github.com/user-attachments/assets/c893d10e-5ef1-4277-b720-de0bd62aa9dd)
 
 
 ### Estadisticas Descriptivas:
@@ -297,7 +280,6 @@ print(f"Máximo: {time_max}")
 print(f"Mínimo: {time_min}")
 
 ```
-<img width="425" height="124" alt="image" src="https://github.com/user-attachments/assets/e89b51ec-265d-4607-8ca4-c2d3ebbe23af" />
 
 ### Graficar la señal en el dominio del tiempo:
 
@@ -314,7 +296,7 @@ plt.legend()
 plt.show()
 
 ```
-![image](https://github.com/user-attachments/assets/287b0263-ce2e-4913-8b3c-91a422e02b25)
+
 
 ### Transformada de Fourier y Densidad Espectral:
 
@@ -336,8 +318,6 @@ plt.grid()
 plt.show()
 
 ```
-![Imagen de WhatsApp 2025-09-02 a las 20 51 04_6571267b](https://github.com/user-attachments/assets/16bd30b2-2203-40b6-acd6-8dfc465d4015)
-
 
 
 ```
@@ -352,8 +332,6 @@ plt.grid()
 plt.show()
 
 ```
-![Imagen de WhatsApp 2025-09-02 a las 20 51 15_f9d52e1c](https://github.com/user-attachments/assets/b6f55be4-4d03-40e7-801e-3f5354f7d4da)
-
 
 
 ### Cálculo de estadísticas en el dominio de la frecuencia:
@@ -381,18 +359,10 @@ plt.title("Histograma de frecuencias de la señal ECG")
 plt.grid()
 plt.show()
 
-
-
 ```
-![Imagen de WhatsApp 2025-09-02 a las 20 51 24_24ac0e8e](https://github.com/user-attachments/assets/3d64828f-dc3b-431c-a351-20f73063d40d)
-
-## Datos estadisticos
-<img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/7886532b-d9ee-481e-88f7-2d92931775b3" />
+### Coeficiente de correlación de Pearson
 
 
-## Coeficiente de correlación de Pearson
-
-<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/f10f9aac-9ecf-40ab-af24-115647a1b985" />
 
 ## Original vs reconstruida
 ```
@@ -425,23 +395,14 @@ Si el máximo ocurre en lag = 0 → no hay retardo (gracias a filtfilt que es de
 
 El máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la alineación de la señal.
 
-<img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/ef0a7da1-91da-41e6-a06b-cd273148200f" />
 
-## Correlación de Pearson ECG original vs filtrada según lag
-
-<img width="985" height="495" alt="image" src="https://github.com/user-attachments/assets/7b3fed74-4d2e-4825-9df5-49166ef5989f" />
-
-La gráfica muestra cómo varía la similitud entre el ECG original y el filtrado cuando se aplica un desfase (lag).
-
-El máximo está en lag = 0 con r ≈ 1, lo que significa que ambas señales son prácticamente iguales y están alineadas.
-
-Al mover una señal respecto a la otra, la correlación cae hacia valores cercanos a 0 o negativos → ya no coinciden.
-
-Los lóbulos alrededor del cero reflejan que el filtrado eliminó ciertas frecuencias, pero sin alterar la forma principal del ECG.
-
-✅ Conclusión corta para exponer: El filtrado limpió la señal sin introducir retardos ni distorsionar la morfología, lo que garantiza que la información fisiológica del ECG se conserva.
 ## Analisis y resultados 
-## 1) Convolución (tres subgráficas)
+
+## 1) Convolución 
+
+<img width="1280" height="635" alt="image" src="https://github.com/user-attachments/assets/26a06b5a-c626-4aa8-8a81-4ec63ebc7dbd" />
+
+
 En la convolución de Gaby su salida tiene una cola larga, lo cual indica que el sistema (h[n]) tiene memoria extendida y que la señal de entrada tuvo impulsos en posiciones clave que se acumularon. El máximo valor de y[n] refleja una coincidencia fuerte entre un valor grande en x[n] y un sector energético de h[n].
 
 En la convolución de María José muestra un pico agudo hacia la mitad y luego decaimiento. Eso significa que la mayoría de los valores no nulos de x[n] coincidieron en un solo intervalo reforzando la salida.
@@ -450,7 +411,9 @@ En la convolución de Martin a salida es más “compacta”, lo que sugiere que
 
 la convolución cuantifica cómo cada entrada excita el sistema. Diferentes h[n] y x[n] producen patrones distintos de salida, demostrando propiedades de linealidad y superposición.
 ---
-## 2) Correlación cruzada: $x_1[n]$ (coseno) vs $x_2[n]$ (seno)
+## 2) Correlación cruzada
+
+<img width="978" height="499" alt="image" src="https://github.com/user-attachments/assets/dd73c3a2-5d6d-4a6a-a267-ce01a1f91c80" />
 
 En lag=0, la correlación es casi cero (como debe ser).
 
@@ -465,74 +428,54 @@ Fuga espectral al analizar ventanas cortas.
 Aunque la ortogonalidad no se cumple perfectamente por el muestreo y la ventana finita, la correlación se aproxima al valor esperado (cero).
 ---
 
-## 3) ECG en el dominio del tiempo (registro completo)
+## 3) ECG en el dominio del tiempo 
 
-Media ≈ 0 → la línea isoeléctrica está centrada (saludable).
+<img width="1233" height="498" alt="image" src="https://github.com/user-attachments/assets/37db0bf6-665c-451a-9aa6-207784274704" />
 
-σ ≈ 0.244 → amplitud estable.
+## 4)Estadísticas en el dominio del tiempo
 
-Máximo ≈ 2.44 y Mín ≈ −1.655 → corresponden a picos QRS y posibles artefactos.
-
-Al graficar millones de muestras, la señal parece un bloque “denso”. Para análisis clínico, es necesario usar ventanas cortas (3–5 s) donde se distingan ondas P, QRS y T.
-
-La señal es fisiológicamente coherente, pero contiene artefactos de deriva de línea base y valores atípicos.
+<img width="425" height="124" alt="image" src="https://github.com/user-attachments/assets/01ee583c-0311-42cd-ad04-337c41780cd2" />
 
 ---
-## 4) Magnitud de la FFT (0–50 Hz)
+## 5) Transformada de Fourier de la señal ECG
 
-Energía principal en 1–20 Hz, donde ocurren P, QRS y T.
+<img width="1234" height="480" alt="image" src="https://github.com/user-attachments/assets/88f7d2b8-6984-46cd-948c-220d60429f6d" />
 
-Un pico fuerte cerca de 0 Hz indica deriva de línea base.
 
-Energía mínima >30 Hz → confirma que la señal ECG es banda angosta.
-
-Este rango es usado en filtros pasa banda (0.5–40 Hz) en cardiología para limpiar la señal.
----
-## 5) Densidad “de potencia” basada en $|FFT|^2$
-
-Concentración clara en 5–15 Hz: región típica de QRS.
-
-Baja contribución >40 Hz: ruido muscular y eléctrico, que usualmente se filtra.
-
-Este rango es usado en filtros pasa banda (0.5–40 Hz) en cardiología para limpiar la señal.
 
 ---
-## 6) Histograma de frecuencias ponderado por potencia
+## 6) Densidad espectral de la señal ECG
 
-El histograma evidencia la distribución de energía.
+<img width="1224" height="487" alt="image" src="https://github.com/user-attachments/assets/101bd143-1354-4c52-aba9-1aed2478a103" />
 
-La mayoría de la potencia está en frecuencias bajas (<15 Hz).
+## 7) Estadísticas en el dominio de la frecuencia
 
-Esto es fisiológicamente correcto, pues la actividad cardíaca no requiere altas frecuencias.
-
----
-## 7) Resumen numérico (tiempo, frecuencia y Pearson)
-
-Frecuencia media ≈ 12.12 Hz → centroide espectral de QRS.
-
-Frecuencia mediana ≈ 30.85 Hz → valor incorrecto (calculado por ordenamiento y no acumulación de energía). La mediana real debería estar ~10–15 Hz.
-
-σf ≈ 7.19 Hz → dispersión moderada del espectro.
-
-la media es coherente, pero la mediana debe corregirse con un método acumulativo.
+<img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/9e452da9-6c3d-4839-871b-e9dd7eefef92" />
 
 ---
-## 8) Comparación temporal: original vs filtrada (0.5–40 Hz)
+## 8) Histograma de frecuencias ponderado por potencia
 
-Gráficamente se ven idénticas.
+<img width="1219" height="496" alt="image" src="https://github.com/user-attachments/assets/7a8c3b80-c171-4335-9773-9944e4eef56e" />
 
-Pearson ≈ 0.996 confirma alta similitud.
 
-El filtrado elimina ruido de línea base y alta frecuencia pero conserva la morfología.
-
-el filtrado no introduce retardo y mantiene alineada la señal.
 
 ---
-## 9) Pearson vs lag (original vs filtrada)
+## 9) Comparacion ECG original vs filtrada 
 
-Pico máximo en lag=0, r≈0.995 → no hay desfase gracias a filtfilt (fase cero).
+<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/eb6226ba-1dd7-47ed-a381-4457b510010a" />
 
-Lóbulos simétricos laterales → producto de la naturaleza cuasiperiódica del ECG y el filtrado pasa banda.
+---
+## 10) Coeficiente de evaluación de Pearson
+
+<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/8237bcbe-c089-4789-8ef8-8405b049ae3f" />
+
+## 11) Person 
+
+<img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/069e7afb-e259-47bd-aba8-ad5ab24eb3bb" />
+
+## Correlación de Pearson ECG original vs filtrada según lag
+
+<img width="985" height="495" alt="image" src="https://github.com/user-attachments/assets/dfe79b14-ba32-46d1-87b2-a07a44afebab" />
 
 
 ---

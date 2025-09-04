@@ -97,6 +97,8 @@ Luego se realiza el cálculo de la convolución manual, donde se realiza la oper
 
 Calculos de Maria Jose 
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
+![Imagen de WhatsApp 2025-08-28 a las 10 31 38_9e54a34d](https://github.com/user-attachments/assets/35ba6f39-49d5-4574-9c53-fca6162ccab5)
+
 Calculos de Martin
 ![Imagen de WhatsApp 2025-09-03 a las 17 47 00_a52bfd0b](https://github.com/user-attachments/assets/e43ac639-52e1-4966-b2be-94fcb1c06010)
 Calculos de Gabriela
@@ -362,8 +364,6 @@ plt.show()
 ```
 ### Coeficiente de correlación de Pearson
 
-
-
 ## Original vs reconstruida
 ```
 signal_reconstructed = np.fft.irfft(fft_values, n=len(signal_data))
@@ -402,45 +402,40 @@ El máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la
 
 <img width="1280" height="635" alt="image" src="https://github.com/user-attachments/assets/26a06b5a-c626-4aa8-8a81-4ec63ebc7dbd" />
 
-
-En la convolución de Gaby su salida tiene una cola larga, lo cual indica que el sistema (h[n]) tiene memoria extendida y que la señal de entrada tuvo impulsos en posiciones clave que se acumularon. El máximo valor de y[n] refleja una coincidencia fuerte entre un valor grande en x[n] y un sector energético de h[n].
-
-En la convolución de María José muestra un pico agudo hacia la mitad y luego decaimiento. Eso significa que la mayoría de los valores no nulos de x[n] coincidieron en un solo intervalo reforzando la salida.
-
-En la convolución de Martin a salida es más “compacta”, lo que sugiere que h[n] distribuye la energía en un rango más reducido y la entrada tiene menos dispersión. La superposición entre valores grandes de x[n] y h[n] es más localizada.
-
-la convolución cuantifica cómo cada entrada excita el sistema. Diferentes h[n] y x[n] producen patrones distintos de salida, demostrando propiedades de linealidad y superposición.
+Estas tres gráficas muestran la convolución, que básicamente nos dice cómo responde un sistema cuando le damos una señal de entrada. En el caso de Gaby, la salida tiene picos grandes entre las posiciones 8 y 12 porque en su entrada había valores altos que activaron al sistema. En María José, la salida va creciendo poco a poco hasta llegar a un máximo alrededor de la posición 9 y luego empieza a bajar. En Martín, también hay un máximo en la misma zona, pero la forma es más corta y concentrada. En pocas palabras: cada señal de entrada genera una salida distinta, y la convolución nos muestra cómo el sistema “mezcla” la forma de la respuesta con los valores de la entrada.
 ---
 ## 2) Correlación cruzada
 
 <img width="978" height="499" alt="image" src="https://github.com/user-attachments/assets/dd73c3a2-5d6d-4a6a-a267-ce01a1f91c80" />
 
-En lag=0, la correlación es casi cero (como debe ser).
+Esta gráfica muestra la correlación cruzada entre una señal coseno y una seno. Como estas dos señales están desfasadas 90°, en teoría deberían ser ortogonales, es decir, su correlación en cero debería ser cercana a 0. Eso es lo que vemos aquí: en el centro la correlación es casi nula. Los valores positivos y negativos que aparecen en otros desplazamientos (lags) son producto de que usamos pocas muestras y no cubrimos un periodo completo. En resumen: la gráfica confirma que coseno y seno son casi independientes, aunque en la práctica aparecen pequeños valores residuales por el muestreo limitado.
 
-Hay valores positivos y negativos en otros lags debido a:
 
-Número finito de muestras (9), que no cubre múltiplos enteros del periodo.
-
-Efectos de muestreo (Ts = 1.25 ms) que no sincronizan perfectamente con la frecuencia de 100 Hz.
-
-Fuga espectral al analizar ventanas cortas.
-
-Aunque la ortogonalidad no se cumple perfectamente por el muestreo y la ventana finita, la correlación se aproxima al valor esperado (cero).
 ---
 
 ## 3) ECG en el dominio del tiempo 
 
 <img width="1233" height="498" alt="image" src="https://github.com/user-attachments/assets/37db0bf6-665c-451a-9aa6-207784274704" />
 
+Aquí vemos la señal de ECG en el dominio del tiempo. El eje horizontal representa el tiempo en segundos (casi 30 000, que son varias horas de registro) y el eje vertical la amplitud de la señal en milivoltios. Lo que se nota es que la señal oscila alrededor de cero, lo cual es normal porque el corazón genera impulsos eléctricos positivos y negativos. Los picos hacia arriba corresponden a los complejos QRS (los latidos), mientras que las caídas bruscas o valores atípicos se deben a ruido o artefactos durante la captura. Al verlo completo parece una banda sólida, porque hay millones de puntos, pero si hacemos zoom podríamos distinguir la forma típica del ECG (ondas P, QRS y T).
+
+👉 En resumen: esta gráfica confirma que la señal está centrada en cero, con amplitudes normales para un ECG real, aunque a esta escala no se distinguen los detalles de cada latido.
+
 ## 4)Estadísticas en el dominio del tiempo
 
 <img width="425" height="124" alt="image" src="https://github.com/user-attachments/assets/01ee583c-0311-42cd-ad04-337c41780cd2" />
 
+Estas son las estadísticas de la señal ECG en el dominio del tiempo. La media es prácticamente 0, lo cual indica que la señal está bien centrada alrededor de la línea base. La mediana es −0.03, muy cercana a cero, confirmando la simetría de los datos. La desviación estándar es 0.24, lo que muestra una variabilidad moderada típica en el ECG. El valor máximo es 2.44 mV y el mínimo es −1.65 mV, que corresponden a los picos positivos y negativos de los latidos.
+
+👉 En resumen: la señal está centrada en cero, con amplitudes y variabilidad normales para un ECG real.
 ---
 ## 5) Transformada de Fourier de la señal ECG
 
 <img width="1234" height="480" alt="image" src="https://github.com/user-attachments/assets/88f7d2b8-6984-46cd-948c-220d60429f6d" />
 
+Esta es la Transformada de Fourier del ECG, que nos muestra la señal en el dominio de la frecuencia. Aquí se ve que la mayor parte de la energía del ECG está concentrada entre 1 y 25 Hz, que es donde aparecen las ondas P, QRS y T. También se nota un pico muy cerca de 0 Hz, que corresponde a la deriva de la línea base. A partir de 30–40 Hz, la magnitud disminuye casi a cero, lo que confirma que el ECG es principalmente una señal de baja frecuencia.
+
+👉 En resumen: el espectro confirma que el ECG tiene su información útil en bajas frecuencias, mientras que lo demás es principalmente ruido o componentes indeseados.
 
 
 ---
@@ -448,35 +443,50 @@ Aunque la ortogonalidad no se cumple perfectamente por el muestreo y la ventana 
 
 <img width="1224" height="487" alt="image" src="https://github.com/user-attachments/assets/101bd143-1354-4c52-aba9-1aed2478a103" />
 
+Esta gráfica muestra la densidad espectral de potencia del ECG, es decir, cuánta energía tiene la señal en cada frecuencia. Se observa que la mayor concentración de potencia está en las bajas frecuencias (0 a 20 Hz), especialmente entre 5 y 15 Hz, que es donde se encuentran las ondas P, QRS y T. También aparece un pico cerca de 0 Hz, que corresponde a la deriva de la línea base. A partir de los 30 Hz, la densidad cae casi a cero, lo que confirma que el ECG es una señal de baja frecuencia.
+
+👉 En resumen: la gráfica demuestra que la energía útil del ECG está en bajas frecuencias, mientras que lo que aparece en frecuencias muy altas suele ser ruido.
+
 ## 7) Estadísticas en el dominio de la frecuencia
 
 <img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/9e452da9-6c3d-4839-871b-e9dd7eefef92" />
 
+Estas son las estadísticas del ECG en el dominio de la frecuencia. La frecuencia media es de aproximadamente 12.1 Hz, lo que refleja que la mayor parte de la energía de la señal se concentra en la zona típica del complejo QRS. La frecuencia mediana aparece en 30.8 Hz, aunque este valor está un poco alto porque depende del método de cálculo, y en la práctica debería ubicarse más cerca de 10–15 Hz. Finalmente, la desviación estándar es de 7.19 Hz, lo que indica que la energía de la señal está distribuida de forma relativamente compacta en bajas frecuencias.
+
+👉 En resumen: el ECG concentra su energía en torno a los 10–20 Hz, lo cual coincide con lo esperado fisiológicamente.
 ---
 ## 8) Histograma de frecuencias ponderado por potencia
 
 <img width="1219" height="496" alt="image" src="https://github.com/user-attachments/assets/7a8c3b80-c171-4335-9773-9944e4eef56e" />
 
+Esta gráfica muestra el histograma de frecuencias del ECG, es decir, cómo se distribuye la energía de la señal a lo largo de las distintas frecuencias. Se observa que la mayor parte de la potencia está concentrada entre 5 y 15 Hz, que corresponde a la actividad principal del corazón (complejos QRS y ondas asociadas). A medida que la frecuencia aumenta, la potencia disminuye rápidamente, casi desapareciendo después de los 30 Hz.
 
+👉 En resumen: el histograma confirma que la energía útil del ECG está en bajas frecuencias, mientras que las altas frecuencias tienen poca contribución y suelen corresponder a ruido.
 
 ---
 ## 9) Comparacion ECG original vs filtrada 
 
 <img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/eb6226ba-1dd7-47ed-a381-4457b510010a" />
 
----
-## 10) Coeficiente de evaluación de Pearson
+Esta gráfica compara la señal ECG original con la ECG filtrada entre 0.5 y 40 Hz. A simple vista parecen casi iguales, lo que significa que el filtrado conserva la forma de la señal. La diferencia está en que la señal filtrada elimina la deriva de baja frecuencia y el ruido de alta frecuencia, quedándose solo con la información útil del corazón.
 
-<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/8237bcbe-c089-4789-8ef8-8405b049ae3f" />
+👉 En resumen: el filtrado limpia la señal sin distorsionar su morfología, asegurando que los latidos se conserven intactos.
+---
 
 ## 11) Person 
 
 <img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/069e7afb-e259-47bd-aba8-ad5ab24eb3bb" />
 
+Estos son los resultados del coeficiente de correlación de Pearson. El valor entre la señal original y la reconstruida con la IFFT es 1.000000, lo que significa que son idénticas. Entre la señal original y la filtrada (0.5–40 Hz) la correlación es de 0.995556, un valor muy cercano a 1, lo que indica que son prácticamente iguales. Además, el máximo Pearson ocurre en lag = 0, confirmando que el filtrado no introdujo desfase en la señal.
+
+👉 En resumen: el ECG filtrado mantiene casi toda la información de la señal original, solo eliminando ruido, y lo hace sin alterar la alineación en el tiempo.
+
 ## Correlación de Pearson ECG original vs filtrada según lag
 
 <img width="985" height="495" alt="image" src="https://github.com/user-attachments/assets/dfe79b14-ba32-46d1-87b2-a07a44afebab" />
+Esta gráfica muestra cómo cambia la correlación de Pearson entre el ECG original y el filtrado cuando se aplica un desfase (lag). El valor máximo está en lag = 0 con r ≈ 1, lo que significa que las señales son prácticamente iguales y están alineadas. A medida que se aumenta el desfase, la correlación disminuye hasta acercarse a cero o valores negativos, mostrando que ya no coinciden.
 
+👉 En resumen: el filtrado no introduce retraso y mantiene la forma de la señal, solo eliminando ruido.
 
 ---
 

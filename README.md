@@ -39,7 +39,7 @@ Son funcines bases de la transformada de Fourier
 Ambas tienen la misma frecuencia, pero están desfasadas 90° (pi/2 radianes). Por esta razón, se consideran ortogonales y su producto promedio en un periodo completo es cero.  
 
 ---
-## Señales Biomedicas: El ECG 
+### Señales Biomedicas: El ECG 
 El electroccardiograma (ECG) es una señal biomedica que representa la actvidad eléctrica del corazón. 
 Los componentes que se deben tener en cuenta principalmente:
 
@@ -58,7 +58,7 @@ Valores típicos: amplitud de milivoltios y duración de cada ciclo ≈ 0.6–1 
 El análisis del ECG en el tiempo permite identificar ritmos y morfología, mientras que en el dominio de la frecuencia se evalúa la energía espectral y se aplican filtros para eliminar ruido.
 
 ---
-## Transformada de Fourier 
+### Transformada de Fourier 
 La transformada de Fourier discreta (DFT) permite representar una señal en el dominio de la frecuencia. Su versión computacional es la transformada rápida de Fourier (FFT).
 Es definida como:
 
@@ -95,21 +95,21 @@ Pearson vs lag: permite ver si el filtrado generó algún desfase.
 Primero se realiza la definición de las señales estableciendo el sistema discreto h[n] a partir de los dígitos del codigo estudiantil de cada integramnte del grupo, asimismo la señal de entrada x[n] a partir de los digitos de la cédula de los mismo integrantes del grupo. 
 Luego se realiza el cálculo de la convolución manual, donde se realiza la operación de la convolución y[n]=x[n]*h[n] mediante sumatorias representando graficamente los resultados obtenidos, como se presentan a continuación:
 
-# Calculos de Maria Jose 
+### Calculos de Maria Jose 
 
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 38_9e54a34d](https://github.com/user-attachments/assets/35ba6f39-49d5-4574-9c53-fca6162ccab5)
 
-# Calculos de Martin
+### Calculos de Martin
 ![Imagen de WhatsApp 2025-09-03 a las 17 47 00_a52bfd0b](https://github.com/user-attachments/assets/e43ac639-52e1-4966-b2be-94fcb1c06010)
 
-# Calculos de Gabriela
+### Calculos de Gabriela
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/32def052-d6a5-434c-bef5-8115d1c78527" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/6e6c3258-f641-47c8-8783-72e4c3ae3a17" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/39db854d-5013-4a12-91e3-774392091d49" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/18876fff-f783-40eb-a9dd-49158c4337b7" />
   
-### Programación:
+## Programación:
 
 Inicialmente agregamos las librerias:
 ```  python
@@ -194,7 +194,7 @@ plt.show()
 ```
 
 
-### Parte B 
+ 
 ## Cálculo de correlación:
 
 El código calcula la correlación cruzada entre dos señales, un coseno y un seno de 100 Hz. Primero, define el tiempo de muestreo (`Ts = 1.25 ms`) y genera 9 muestras (`n = np.arange(9)`). Luego, crea las señales `x1` y `x2` usando funciones coseno y seno, respectivamente. Finalmente, con `np.correlate(x1, x2, mode='full')`, mide la similitud entre ambas en distintos desfases, lo que permite analizar su relación temporal.
@@ -239,7 +239,7 @@ plt.show()
 ```
 
 
-### Segundo Punto:
+# Segundo Punto:
 
 Se selecciona la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)
 - Guardar los archivos .hea, .data, .apn en una misma carpeta junto con la señal
@@ -365,9 +365,9 @@ plt.grid()
 plt.show()
 
 ```
-### Coeficiente de correlación de Pearson
+## Coeficiente de correlación de Pearson
 
-## Original vs reconstruida
+### Original vs reconstruida
 ```
 signal_reconstructed = np.fft.irfft(fft_values, n=len(signal_data))
 pearson_ecg_ifft = np.corrcoef(signal_data, signal_reconstructed)[0, 1]
@@ -376,7 +376,7 @@ pearson_ecg_ifft = np.corrcoef(signal_data, signal_reconstructed)[0, 1]
 Reconstruimos la señal con irfft.
 Pearson ≈ 1 → indica que la reconstrucción es idéntica a la original.
 
-## Original vs filtrada (0.5–40 Hz)
+### Original vs filtrada (0.5–40 Hz)
 
 ```
 ecg_filtered = bandpass(signal_data, sampling_rate, 0.5, 40.0, order=4)
@@ -387,7 +387,7 @@ Filtrado pasa banda elimina ruido de baja frecuencia (deriva) y alta frecuencia 
 
 Pearson < 1 pero alto (ej. 0.8–0.95) → la señal mantiene su forma general.
 
-## Pearson vs desfase
+### Pearson vs desfase
 ```
 lags = np.arange(-200, 201)
 pearson_vs_lag = [pearson_lag(signal_data, ecg_filtered, lag=int(k)) for k in lags]
@@ -399,7 +399,7 @@ Si el máximo ocurre en lag = 0 → no hay retardo (gracias a filtfilt que es de
 El máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la alineación de la señal.
 
 
-### Analisis y resultados 
+# Analisis y resultados 
 
 ## 1) Convolución 
 

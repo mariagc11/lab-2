@@ -90,6 +90,19 @@ Original vs filtrada: r alto pero < 1 (muestra similitud con reducción de ruido
 Pearson vs lag: permite ver si el filtrado generó algún desfase.
 
 ---
+## Densidad espectral de potencia (PSD)
+
+La densidad espectral de potencia indica cómo se distribuye la energía de una señal en función de la frecuencia.
+
+Se calcula a partir de la siguiente ecuación:
+
+<img width="179" height="50" alt="image" src="https://github.com/user-attachments/assets/47672310-d86f-4c17-b9a2-b39fc8880dd4" />
+
+X(f) nos indica que es la transformada de Fourier 
+
+---
+---
+
 ## Procedimiento practica # 2 
 
 Primero se realiza la definición de las señales estableciendo el sistema discreto h[n] a partir de los dígitos del codigo estudiantil de cada integramnte del grupo, asimismo la señal de entrada x[n] a partir de los digitos de la cédula de los mismo integrantes del grupo. 

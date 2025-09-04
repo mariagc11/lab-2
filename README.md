@@ -5,16 +5,19 @@ Uno de los elementos tratados en la practica a continuación, es la convolución
 
 ## Marco Teórico
 
-### Convolución
-la convolución discreta describe cómo una señal se transforma al pasar por un sistema LTI ( lineales e invariantes en el tiempo). 
-Dónde la convolución consiste en tomar la señal de entrada x[n], multiplicarla por una versión invertida y desplazada de h[n], y sumar los resultados para cada n 
+### Convolución de señales discretas 
+la convolución es una operación matemática fundamental en el análisis de sistemas lineales e invariantes en el tiempo (LTI). Dónde consiste en calcular la salida de un sistema cuando se conoce su respuesta al impulso h[n], y la señal de entrada x[n].
+La definición discreta de la convolución es:
 
- 
+<img width="428" height="86" alt="image" src="https://github.com/user-attachments/assets/0f0e2a74-f595-4169-8d4d-f0f4a19e0fa7" />
+
+Cada muestra de la entrada multiplica la respuesta la impulso y la desplaza en el tiempo. La salida es la suma de todas esas respuestas [n].
+
 ---
 
 ### Correlación cruzada
-La correlación cruzada es una operación matemática que mide la similitud entre dos señales en función de un desfase o retardo (lag).
-Dadas dos señales discretas x[n] y y[n] , la correlación cruzada se define como:
+La correlación cruzada es una operación matemática que mide la similitud entre dos señales en función de un desfase o retardo (lag). Dadas dos señales discretas x[n] y y[n].
+La correlación cruzada se define como:
 ![Imagen de WhatsApp 2025-09-03 a las 18 20 01_960447c1](https://github.com/user-attachments/assets/63976c2f-b70f-4514-8cf1-0da810eb436e)
 
 Dónde: 
@@ -22,21 +25,68 @@ Dónde:
 * m puede ser positivo o negativo (adelantado o atrasado )
 * Parecida a la convolucion pero sin invertir una de las señales
 
-
-
 ---
 
 ### Señales sinusoidales
-El coseno y el seno son señales fundamentales en el análisis de Fourier las cuales se pueden utilizar de diversas formas en las toma y análisis de señales 
+El coseno y el seno son señales fundamentales en el análisis de la transformadfa de Fourier las cuales se pueden utilizar de diversas formas en las tomas y análisis de señales.
+Son funcines bases de la transformada de Fourier
 
+<img width="245" height="42" alt="image" src="https://github.com/user-attachments/assets/5de8452b-75af-4cb1-9863-eecdb270ff35" />
+
+<img width="234" height="38" alt="image" src="https://github.com/user-attachments/assets/e001b2ee-b18a-495d-8884-005cbbd25ec0" />
+
+Ambas tienen la misma frecuencia, pero están desfasadas 90° (pi/2 radianes). Por esta razón, se consideran ortogonales y su producto promedio en un periodo completo es cero.  
+
+---
+## Señales Biomedicas: El ECG 
+El electroccardiograma (ECG) es una señal biomedica que representa la actvidad eléctrica del corazón. 
+Los componentes que se deben tener en cuenta principalmente:
+
+Onda P: despolarización auricular.
+
+Complejo QRS: despolarización ventricular (mayor amplitud y frecuencia).
+
+Onda T: repolarización ventricular.
+
+Características generales:
+
+Banda de frecuencia útil: 0.5–40 Hz.
+
+Valores típicos: amplitud de milivoltios y duración de cada ciclo ≈ 0.6–1 s (frecuencia cardíaca 60–100 latidos/min).
+
+El análisis del ECG en el tiempo permite identificar ritmos y morfología, mientras que en el dominio de la frecuencia se evalúa la energía espectral y se aplican filtros para eliminar ruido.
+
+---
+## Transformada de Fourier 
+La transformada de Fourier discreta (DFT) permite representar una señal en el dominio de la frecuencia. Su versión computacional es la transformada rápida de Fourier (FFT).
+Es definida como:
+
+<img width="278" height="94" alt="image" src="https://github.com/user-attachments/assets/152d5100-a57e-4c1e-a30d-61d0a807c095" />
+
+Convierte una señal en el tiempo en sus componentes frecuenciales.
+
+Permite analizar en qué frecuencias se concentra la energía de la señal.
+
+En ECG, muestra que la mayor parte de la energía está en bajas frecuencias (QRS en torno a 10–25 Hz).
 
 ---
 
 ### Coeficiente de correlación de Pearson
 El coeficiente de correlación de Pearson (r) mide el grado de relación lineal entre dos variables o señales donde definimos r como :
-![Imagen de WhatsApp 2025-09-03 a las 17 45 55_e01d58fe](https://github.com/user-attachments/assets/59c607d3-1885-4fcf-a389-ed76f4812371)
-		
 
+![Imagen de WhatsApp 2025-09-03 a las 17 45 55_e01d58fe](https://github.com/user-attachments/assets/59c607d3-1885-4fcf-a389-ed76f4812371)
+
+r=1 → correlación perfecta positiva.
+
+r=−1 → correlación perfecta negativa.
+
+r=0 → no hay correlación lineal.
+
+Original vs reconstruida (IFFT): r ≈ 1.
+
+Original vs filtrada: r alto pero < 1 (muestra similitud con reducción de ruido).
+
+Pearson vs lag: permite ver si el filtrado generó algún desfase.
 
 ## Paso a paso.
  Seleccionar la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)

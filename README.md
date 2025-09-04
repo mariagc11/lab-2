@@ -95,19 +95,22 @@ Pearson vs lag: permite ver si el filtrado generó algún desfase.
 Primero se realiza la definición de las señales estableciendo el sistema discreto h[n] a partir de los dígitos del codigo estudiantil de cada integramnte del grupo, asimismo la señal de entrada x[n] a partir de los digitos de la cédula de los mismo integrantes del grupo. 
 Luego se realiza el cálculo de la convolución manual, donde se realiza la operación de la convolución y[n]=x[n]*h[n] mediante sumatorias representando graficamente los resultados obtenidos, como se presentan a continuación:
 
-Calculos de Maria Jose 
+# Calculos de Maria Jose 
+
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 38_9e54a34d](https://github.com/user-attachments/assets/35ba6f39-49d5-4574-9c53-fca6162ccab5)
 
-Calculos de Martin
+# Calculos de Martin
 ![Imagen de WhatsApp 2025-09-03 a las 17 47 00_a52bfd0b](https://github.com/user-attachments/assets/e43ac639-52e1-4966-b2be-94fcb1c06010)
-Calculos de Gabriela
+
+# Calculos de Gabriela
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/32def052-d6a5-434c-bef5-8115d1c78527" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/6e6c3258-f641-47c8-8783-72e4c3ae3a17" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/39db854d-5013-4a12-91e3-774392091d49" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/18876fff-f783-40eb-a9dd-49158c4337b7" />
   
-## Programación:
+### Programación:
+
 Inicialmente agregamos las librerias:
 ```  python
 import numpy as np
@@ -123,7 +126,7 @@ import os
 - **SciPy Signal** ( signal) se usa para procesar señales (aunque en este código no se usa mucho).
 - **OS** ( os) nos permite manejar archivos y rutas en el sistema operativo.
 
-### Convolución de secuencias discretas
+## Convolución de secuencias discretas
 
 El código define las señales \( h[n] \) y \( x[n] \) para tres personas diferentes: Gaby, María José y Martin. Estas señales son representadas como arreglos de NumPy, donde \( h[n] \) corresponde al sistema y \( x[n] \) a la señal de entrada. Cada persona tiene su propio conjunto de datos, posiblemente para comparar cómo interactúan las señales en distintas situaciones.
 ```
@@ -154,7 +157,7 @@ y_martin = calcular_convolucion(h_martin, x_martin)
 
 ```
 
-### Grafico:
+## Grafico:
 
 Este fragmento de código usa *Matplotlib* para visualizar las señales convolucionadas de Gaby, María José y Martin en una sola figura con tres subgráficos. Primero, se crea una figura de tamaño 12x6. Luego, se generan tres gráficos de tipo *stem*, que representan las señales discretas con líneas y marcadores.  
 
@@ -192,7 +195,7 @@ plt.show()
 
 
 ### Parte B 
-### Cálculo de correlación:
+## Cálculo de correlación:
 
 El código calcula la correlación cruzada entre dos señales, un coseno y un seno de 100 Hz. Primero, define el tiempo de muestreo (`Ts = 1.25 ms`) y genera 9 muestras (`n = np.arange(9)`). Luego, crea las señales `x1` y `x2` usando funciones coseno y seno, respectivamente. Finalmente, con `np.correlate(x1, x2, mode='full')`, mide la similitud entre ambas en distintos desfases, lo que permite analizar su relación temporal.
 
@@ -208,7 +211,7 @@ x2 = np.sin(2 * np.pi * f * n * Ts)  # Señal x2[n]
 
 correlacion = np.correlate(x1, x2, mode='full')
 ```
-### Correlación:
+## Correlación:
 
 Ts = 1.25e-3  # Tiempo de muestreo en segundos
 n = np.arange(9)  # Nueve muestras según el documento
@@ -221,7 +224,7 @@ x2 = np.sin(2 * np.pi * f * n * Ts)  # Señal x2[n]
 Correlación cruzada entre ambas señales:
 correlacion = np.correlate(x1, x2, mode='full')
 
-### Gráfico: 
+## Gráfico: 
 Este código genera una gráfica de la correlación cruzada entre las señales \( x_1[n] \) y \( x_2[n] \). Primero, se crea una figura de tamaño 8x4. Luego, con `plt.stem()`, se representa la correlación cruzada en un gráfico de líneas y marcadores azules (`b-` y `bo`), con una línea base negra (`k-`). El eje x muestra los desplazamientos de la correlación, que van desde `-len(x1) + 1` hasta `len(x1)`, indicando cómo varía la similitud entre las señales a diferentes desfases. Se añaden título, etiquetas y una cuadrícula para mejorar la visualización. Finalmente, `plt.show()` muestra el gráfico.
 
 ```
@@ -263,7 +266,7 @@ time = np.arange(len(signal_data)) / sampling_rate
 
 
 
-### Estadisticas Descriptivas:
+## Estadisticas Descriptivas:
 
 Primero, obtiene la media (np.mean), mediana (np.median), desviación estándar (np.std), valor máximo (np.max) y valor mínimo (np.min) de los datos de la señal. Luego, imprime estos valores en pantalla con un formato claro, permitiendo analizar su distribución y variabilidad. Esto es útil para entender el comportamiento general de la señal antes de aplicar otros análisis más complejos.
 ```
@@ -283,7 +286,7 @@ print(f"Mínimo: {time_min}")
 
 ```
 
-### Graficar la señal en el dominio del tiempo:
+## Graficar la señal en el dominio del tiempo:
 
 El código grafica la señal de ECG en función del tiempo. Primero, crea una figura de 10x4 y luego dibuja la señal con `plt.plot()`, etiquetando los ejes y agregando un título. También incluye una leyenda para identificar la señal y, al final, muestra la gráfica con `plt.show()`, permitiendo visualizar cómo varía la señal a lo largo del tiempo.
 
@@ -300,7 +303,7 @@ plt.show()
 ```
 
 
-### Transformada de Fourier y Densidad Espectral:
+## Transformada de Fourier y Densidad Espectral:
 
 El código aplica la Transformada de Fourier a la señal de ECG para analizar sus frecuencias. Primero, calcula las frecuencias (`freqs`), obtiene la transformada (`fft_values`) y luego la densidad espectral de potencia (`power_spectrum`). Después, genera dos gráficas: una con la magnitud de la transformada para ver qué frecuencias están presentes y otra con la densidad espectral para visualizar cómo se distribuye la energía. Ambos gráficos incluyen etiquetas y una cuadrícula para facilitar su interpretación.
 
@@ -336,7 +339,7 @@ plt.show()
 ```
 
 
-### Cálculo de estadísticas en el dominio de la frecuencia:
+## Cálculo de estadísticas en el dominio de la frecuencia:
 
 Acá se calcula y analiza estadísticas en el dominio de la frecuencia para la señal de ECG. Primero, obtiene la **frecuencia media** (`freq_mean`), ponderando cada frecuencia con su densidad espectral de potencia y dividiendo por la suma total de la potencia. Luego, calcula la **frecuencia mediana** (`freq_median`), ordenando la densidad espectral y seleccionando la frecuencia en la posición central. La **desviación estándar** (`freq_std`) se obtiene midiendo la dispersión de las frecuencias respecto a la media, también ponderada por la potencia.  
 

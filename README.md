@@ -220,9 +220,6 @@ x2 = np.sin(2 * np.pi * f * n * Ts)  # Señal x2[n]
 Correlación cruzada entre ambas señales:
 correlacion = np.correlate(x1, x2, mode='full')
 
-```
-```
-
 ### Gráfico: 
 Este código genera una gráfica de la correlación cruzada entre las señales \( x_1[n] \) y \( x_2[n] \). Primero, se crea una figura de tamaño 8x4. Luego, con `plt.stem()`, se representa la correlación cruzada en un gráfico de líneas y marcadores azules (`b-` y `bo`), con una línea base negra (`k-`). El eje x muestra los desplazamientos de la correlación, que van desde `-len(x1) + 1` hasta `len(x1)`, indicando cómo varía la similitud entre las señales a diferentes desfases. Se añaden título, etiquetas y una cuadrícula para mejorar la visualización. Finalmente, `plt.show()` muestra el gráfico.
 

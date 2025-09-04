@@ -382,40 +382,81 @@ plt.show()
 <img width="985" height="495" alt="image" src="https://github.com/user-attachments/assets/7b3fed74-4d2e-4825-9df5-49166ef5989f" />
 
 ## Analisis y resultados 
-
-
 ## 1) Convolución (tres subgráficas)
+En la convolución de Gaby su salida tiene una cola larga, lo cual indica que el sistema (h[n]) tiene memoria extendida y que la señal de entrada tuvo impulsos en posiciones clave que se acumularon. El máximo valor de y[n] refleja una coincidencia fuerte entre un valor grande en x[n] y un sector energético de h[n].
 
+En la convolución de María José muestra un pico agudo hacia la mitad y luego decaimiento. Eso significa que la mayoría de los valores no nulos de x[n] coincidieron en un solo intervalo reforzando la salida.
+
+En la convolución de Martin a salida es más “compacta”, lo que sugiere que h[n] distribuye la energía en un rango más reducido y la entrada tiene menos dispersión. La superposición entre valores grandes de x[n] y h[n] es más localizada.
+
+la convolución cuantifica cómo cada entrada excita el sistema. Diferentes h[n] y x[n] producen patrones distintos de salida, demostrando propiedades de linealidad y superposición.
 ---
-
 ## 2) Correlación cruzada: $x_1[n]$ (coseno) vs $x_2[n]$ (seno)
 
+En lag=0, la correlación es casi cero (como debe ser).
 
+Hay valores positivos y negativos en otros lags debido a:
+
+Número finito de muestras (9), que no cubre múltiplos enteros del periodo.
+
+Efectos de muestreo (Ts = 1.25 ms) que no sincronizan perfectamente con la frecuencia de 100 Hz.
+
+Fuga espectral al analizar ventanas cortas.
+
+Aunque la ortogonalidad no se cumple perfectamente por el muestreo y la ventana finita, la correlación se aproxima al valor esperado (cero).
 ---
 
 ## 3) ECG en el dominio del tiempo (registro completo)
 
----
+Media ≈ 0 → la línea isoeléctrica está centrada (saludable).
 
+σ ≈ 0.244 → amplitud estable.
+
+Máximo ≈ 2.44 y Mín ≈ −1.655 → corresponden a picos QRS y posibles artefactos.
+
+Al graficar millones de muestras, la señal parece un bloque “denso”. Para análisis clínico, es necesario usar ventanas cortas (3–5 s) donde se distingan ondas P, QRS y T.
+
+La señal es fisiológicamente coherente, pero contiene artefactos de deriva de línea base y valores atípicos.
+
+---
 ## 4) Magnitud de la FFT (0–50 Hz)
 
+Energía principal en 1–20 Hz, donde ocurren P, QRS y T.
 
+Un pico fuerte cerca de 0 Hz indica deriva de línea base.
+
+Energía mínima >30 Hz → confirma que la señal ECG es banda angosta.
+
+Este rango es usado en filtros pasa banda (0.5–40 Hz) en cardiología para limpiar la señal.
 ---
-
 ## 5) Densidad “de potencia” basada en $|FFT|^2$
 
+Concentración clara en 5–15 Hz: región típica de QRS.
+
+Baja contribución >40 Hz: ruido muscular y eléctrico, que usualmente se filtra.
+
+Este rango es usado en filtros pasa banda (0.5–40 Hz) en cardiología para limpiar la señal.
 
 ---
-
 ## 6) Histograma de frecuencias ponderado por potencia
 
+El histograma evidencia la distribución de energía.
+
+La mayoría de la potencia está en frecuencias bajas (<15 Hz).
+
+Esto es fisiológicamente correcto, pues la actividad cardíaca no requiere altas frecuencias.
 
 ---
-
 ## 7) Resumen numérico (tiempo, frecuencia y Pearson)
 
----
+Frecuencia media ≈ 12.12 Hz → centroide espectral de QRS.
 
+Frecuencia mediana ≈ 30.85 Hz → valor incorrecto (calculado por ordenamiento y no acumulación de energía). La mediana real debería estar ~10–15 Hz.
+
+σf ≈ 7.19 Hz → dispersión moderada del espectro.
+
+la media es coherente, pero la mediana debe corregirse con un método acumulativo.
+---
 ## 8) Comparación temporal: original vs filtrada (0.5–40 Hz)
 
 

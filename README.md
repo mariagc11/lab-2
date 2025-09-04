@@ -104,8 +104,6 @@ Calculos de Gabriela
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/6e6c3258-f641-47c8-8783-72e4c3ae3a17" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/39db854d-5013-4a12-91e3-774392091d49" />
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/18876fff-f783-40eb-a9dd-49158c4337b7" />
-
-En segunda instancia se implementa la convolución en Python:
   
 ## Programación:
 Inicialmente agregamos las librerias:

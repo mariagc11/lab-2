@@ -538,6 +538,8 @@ En este laboratorio, exploramos la convolución y la correlación como herramien
 
 La implementación en Python facilitó el análisis y la visualización de los resultados, permitiéndonos interpretar mejor la información contenida en las señales. Esto es fundamental en aplicaciones como el procesamiento de señales biomédicas, donde la correcta identificación de patrones en ECG u otras señales fisiológicas puede mejorar el diagnóstico y la toma de decisiones clínicas. En general, este laboratorio reforzó la importancia de estas técnicas en el análisis y manipulación de señales digitales.
 
+Al hacer la convolucion en físico aprendemos con más práctica como funciona y que es, viendo como se transforma y se hace una nueva señal a partir de dos señales distintas donde no dependemos de una máquina nomás que con un codigo corto nos resuelve todo el trabajo, ya que así vamos más a fondo al comprender el tema visto 
+
 Además de afianzar los fundamentos matemáticos del procesamiento de señales, este laboratorio permitió evidenciar la relevancia práctica de dichas técnicas en contextos reales como el análisis de señales biomédicas. La aplicación de convolución, correlación y transformada de Fourier no solo aportó al entendimiento de cómo se comportan las señales en diferentes dominios, sino que también mostró el potencial de estas herramientas para la detección de patrones clínicamente relevantes. Esto resalta la importancia de integrar la teoría con la experimentación computacional, fomentando la capacidad de aplicar métodos digitales al diagnóstico y monitoreo en ingeniería biomédica.
 
 ## Referencias.

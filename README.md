@@ -18,6 +18,7 @@ Cada muestra de la entrada multiplica la respuesta la impulso y la desplaza en e
 ### Correlación cruzada
 La correlación cruzada es una operación matemática que mide la similitud entre dos señales en función de un desfase o retardo (lag). Dadas dos señales discretas x[n] y y[n].
 La correlación cruzada se define como:
+
 ![Imagen de WhatsApp 2025-09-03 a las 18 20 01_960447c1](https://github.com/user-attachments/assets/63976c2f-b70f-4514-8cf1-0da810eb436e)
 
 Dónde: 

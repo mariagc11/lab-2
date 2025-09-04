@@ -375,7 +375,39 @@ plt.show()
 <img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/7886532b-d9ee-481e-88f7-2d92931775b3" />
 <img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/f10f9aac-9ecf-40ab-af24-115647a1b985" />
 
-## Datos de la correlación de Person 
+## Coeficiente de correlación de Pearson
+
+## Original vs reconstruida
+```
+signal_reconstructed = np.fft.irfft(fft_values, n=len(signal_data))
+pearson_ecg_ifft = np.corrcoef(signal_data, signal_reconstructed)[0, 1]
+
+```
+Reconstruimos la señal con irfft.
+Pearson ≈ 1 → indica que la reconstrucción es idéntica a la original.
+
+## Original vs filtrada (0.5–40 Hz)
+
+```
+ecg_filtered = bandpass(signal_data, sampling_rate, 0.5, 40.0, order=4)
+pearson_ecg_filtered = np.corrcoef(signal_data, ecg_filtered)[0, 1]
+
+```
+Filtrado pasa banda elimina ruido de baja frecuencia (deriva) y alta frecuencia (interferencia muscular o de red).
+
+Pearson < 1 pero alto (ej. 0.8–0.95) → la señal mantiene su forma general.
+
+## Pearson vs desfase
+```
+lags = np.arange(-200, 201)
+pearson_vs_lag = [pearson_lag(signal_data, ecg_filtered, lag=int(k)) for k in lags]
+```
+Compara la correlación variando el desfase.
+
+Si el máximo ocurre en lag = 0 → no hay retardo (gracias a filtfilt que es de fase cero).
+
+📌 Interpretación: el máximo debe estar en lag=0 con r alto, indicando que el filtrado mantiene la alineación de la señal.
+
 <img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/ef0a7da1-91da-41e6-a06b-cd273148200f" />
 <img width="985" height="495" alt="image" src="https://github.com/user-attachments/assets/7b3fed74-4d2e-4825-9df5-49166ef5989f" />
 

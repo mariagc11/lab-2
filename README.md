@@ -191,6 +191,7 @@ plt.show()
 ```
 ![Imagen de WhatsApp 2025-09-02 a las 20 50 31_e311e202](https://github.com/user-attachments/assets/3f875b5b-24f4-4563-afbc-67b8ed9fc721)
 
+### Parte B 
 ### Cálculo de correlación:
 
 El código calcula la correlación cruzada entre dos señales, un coseno y un seno de 100 Hz. Primero, define el tiempo de muestreo (`Ts = 1.25 ms`) y genera 9 muestras (`n = np.arange(9)`). Luego, crea las señales `x1` y `x2` usando funciones coseno y seno, respectivamente. Finalmente, con `np.correlate(x1, x2, mode='full')`, mide la similitud entre ambas en distintos desfases, lo que permite analizar su relación temporal.

@@ -375,6 +375,7 @@ plt.show()
 
 ## Datos estadisticos
 <img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/7886532b-d9ee-481e-88f7-2d92931775b3" />
+<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/f10f9aac-9ecf-40ab-af24-115647a1b985" />
 
 
 ## Analisis y resultados 
@@ -382,10 +383,10 @@ plt.show()
 
 
 ## 1) Convolución (tres subgráficas)
-<img width="839" height="118" alt="image" src="https://github.com/user-attachments/assets/7886532b-d9ee-481e-88f7-2d92931775b3" />
+
 <img width="985" height="495" alt="image" src="https://github.com/user-attachments/assets/7b3fed74-4d2e-4825-9df5-49166ef5989f" />
 
-<img width="1461" height="495" alt="image" src="https://github.com/user-attachments/assets/f10f9aac-9ecf-40ab-af24-115647a1b985" />
+
 <img width="644" height="68" alt="image" src="https://github.com/user-attachments/assets/ef0a7da1-91da-41e6-a06b-cd273148200f" />
 
 ---

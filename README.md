@@ -89,7 +89,23 @@ Original vs filtrada: r alto pero < 1 (muestra similitud con reducción de ruido
 Pearson vs lag: permite ver si el filtrado generó algún desfase.
 
 ---
-## Procedimiento practica # 2
+## Procedimiento practica # 2 
+
+Primero se realiza la definición de las señales estableciendo el sistema discreto h[n] a partir de los dígitos del codigo estudiantil de cada integramnte del grupo, asimismo la señal de entrada x[n] a partir de los digitos de la cédula de los mismo integrantes del grupo. 
+Luego se realiza el cálculo de la convolución manual, donde se realiza la operación de la convolución y[n]=x[n]*h[n] mediante sumatorias representando graficamente los resultados obtenidos, como se presentan a continuación:
+
+Calculos de Maria Jose 
+![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
+Calculos de Martin
+![Imagen de WhatsApp 2025-09-03 a las 17 47 00_a52bfd0b](https://github.com/user-attachments/assets/e43ac639-52e1-4966-b2be-94fcb1c06010)
+Calculos de Gabriela
+<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/32def052-d6a5-434c-bef5-8115d1c78527" />
+<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/6e6c3258-f641-47c8-8783-72e4c3ae3a17" />
+<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/39db854d-5013-4a12-91e3-774392091d49" />
+<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/18876fff-f783-40eb-a9dd-49158c4337b7" />
+
+
+
 
 Se selecciona la señal EMG por medio de Physionet [link Physionet](https://physionet.org/)
 - Guardar los archivos .hea, .data, .apn en una misma carpeta junto con la señal
@@ -129,7 +145,8 @@ h_martin = np.array([1, 0, 1, 6, 5, 9, 2, 6, 7, 7])
 x_martin = np.array([5, 6, 0, 0, 5, 1, 1])
 
 ```
-Graficas de convolución:
+Graficas de las convoluciones a mano
+
 
 ![Imagen de WhatsApp 2025-08-28 a las 10 31 04_e1ff1398](https://github.com/user-attachments/assets/2823db13-5902-432b-90e9-096799a75d06)
 ![Imagen de WhatsApp 2025-09-03 a las 17 47 00_a52bfd0b](https://github.com/user-attachments/assets/e43ac639-52e1-4966-b2be-94fcb1c06010)
